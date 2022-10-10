@@ -129,14 +129,14 @@ class _SellState extends State<Sell> {
                                     const Color.fromARGB(255,130,36,50).withOpacity(0.1),
                                     Colors.yellow.withOpacity(0.1),
                                   ]),
-                                  border: Border.all(color: const Color.fromARGB(255,130,36,50)!),
+                                  border: Border.all(color: const Color.fromARGB(255,130,36,50)),
                                   borderRadius: BorderRadius.circular(20)),
                               selectedDecoration: BoxDecoration(
                                   gradient: const LinearGradient(colors: [
                                     Color.fromARGB(255,130,36,50),
                                     Color.fromARGB(255,130,36,50)
                                   ]),
-                                  border: Border.all(color: const Color.fromARGB(255,130,36,50)!),
+                                  border: Border.all(color: const Color.fromARGB(255,130,36,50)),
                                   borderRadius: BorderRadius.circular(5)),
                               disabledDecoration: BoxDecoration(
                                   color: Colors.grey,
