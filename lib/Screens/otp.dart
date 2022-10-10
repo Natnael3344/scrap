@@ -22,7 +22,11 @@ class _OTPScreenState extends State<OTPScreen> {
     // TODO: implement initState
     _verifyPhone();
     super.initState();
+  }
+  @override
+  void dispose(){
 
+    super.dispose();
   }
   showLoaderDialog(BuildContext context){
     AlertDialog alert=AlertDialog(
@@ -123,14 +127,11 @@ class _OTPScreenState extends State<OTPScreen> {
                         Navigator.pop(context);
                         showLoaderDialog1(context);
                         Future.delayed(const Duration(seconds: 1), () {
-                          setState(() {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => const Home()),
                                       (route) => false);
-                          });
-
                         });
 
                       }

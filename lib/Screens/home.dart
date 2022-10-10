@@ -14,12 +14,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Completer<GoogleMapController> _controller = Completer();
-  bool _selected=false;
-  bool _selected1=false;
-  bool _selected2=false;
-  bool _selected3=false;
-  bool _selected4=false;
-  bool _selected5=false;
+   bool _selected=false;
+   bool _selected1=false;
+   bool _selected2=false;
+   bool _selected3=false;
+   bool _selected4=false;
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
@@ -32,204 +31,147 @@ class _HomeState extends State<Home> {
       zoom: 19.151926040649414);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home",backgroundColor: Color.fromARGB(255,130,36,50)),
-          BottomNavigationBarItem(icon: Icon(Icons.history),label: "Activity"),
-          BottomNavigationBarItem(icon: Icon(Icons.person),label: "Account"),
-          BottomNavigationBarItem(icon: Icon(Icons.monetization_on_outlined),label: "Rate list"),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(15),
-              height: 150,
-              width: double.maxFinite,
-              decoration: const BoxDecoration(color: Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(20))),
-              child:  const Center(child: Text("What would you like to sell?",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
-            ),
-            SizedBox(
-              height: 275,
-              child: GridView.count(
-                crossAxisCount: 3,
-                primary: false,
-                padding: const EdgeInsets.all(15),
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home",backgroundColor: Color.fromARGB(255,130,36,50)),
+            BottomNavigationBarItem(icon: Icon(Icons.history),label: "Activity"),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Account"),
+            BottomNavigationBarItem(icon: Icon(Icons.monetization_on_outlined),label: "Rate list"),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.all(15),
+                height: 150,
+                width: double.maxFinite,
+                decoration: const BoxDecoration(color: Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(20))),
+                child:  const Center(child: Text("What would you like to sell?",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
+              ),
+              SizedBox(
+                height: 275,
+                child: GridView.count(
+                  crossAxisCount: 3,
+                  primary: false,
+                  padding: const EdgeInsets.all(15),
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                  children: [
+                    buildContainer(selected: _selected,title: "Paper",
+                    onValueChanged: (newValue) {
+                      setState(() {
+                        _selected = newValue;
+                      });
+                    }
+                    ),
+                    buildContainer(selected: _selected1,title: "Plastic",
+                        onValueChanged: (newValue) {
+                          setState(() {
+                            _selected1 = newValue;
+                          });
+                        }
+                    ),
+                    buildContainer(selected: _selected2,title: "Metal",
+                        onValueChanged: (newValue) {
+                          setState(() {
+                            _selected2 = newValue;
+                          });
+                        }
+                    ),
+                    buildContainer(selected: _selected3,title: "E-Waste",
+                        onValueChanged: (newValue) {
+                          setState(() {
+                            _selected3 = newValue;
+                          });
+                        }
+                    ),
+                    buildContainer(selected: _selected4,title: "Other items",
+                        onValueChanged: (newValue) {
+                          setState(() {
+                            _selected4 = newValue;
+                          });
+                        }
+                    ),
+                  ],
+                ),
+              ),
+              Row(
                 children: [
                   Container(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: SelectableContainer(
-                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
-                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      unselectedBorderColor: Colors.white,
-                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      borderSize: 0,
-                      iconColor: const Color.fromARGB(255,130,36,50),
-                      selected: _selected,
-                      onValueChanged: (newValue) {
-                        setState(() {
-                          _selected = newValue;
-                        });
-                      },
-                     child:  Center(child: Column(
-                        children: [
-                          Lottie.asset('assets/paper.json',height: 70),
-                          const Text("Paper",style: TextStyle(color: Colors.white),),
-                        ],
-                      )),
+                    margin: const EdgeInsets.only(right: 15,left: 15),
+                    width: 300,
+                    child:   const TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search,color: Colors.white,),
+                        hintText: "Pick up address....",
+                        labelStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.white),
+                        fillColor: Color.fromARGB(255,130,36,50),
+                        filled: true,
+                        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30)))
+                      ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child:  SelectableContainer(
-                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
-                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      unselectedBorderColor: Colors.white,
-                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      borderSize: 0,
-                      iconColor: const Color.fromARGB(255,130,36,50),
-                      selected: _selected1,
-                      onValueChanged: (newValue) {
-                        setState(() {
-                          _selected1 = newValue;
-                        });
-                      },
-                      child: Center(child: Column(
-                        children: [
-                          Container(margin:const EdgeInsets.only(top:20,bottom: 10),child: Lottie.asset('assets/plastic.json',height: 40)),
-                          const Text("Plastic",style: TextStyle(color: Colors.white),),
-                        ],
-                      )),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child:  SelectableContainer(
-                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
-                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      unselectedBorderColor: Colors.white,
-                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      borderSize: 0,
-                      iconColor: const Color.fromARGB(255,130,36,50),
-                      selected: _selected2,
-                      onValueChanged: (newValue) {
-                        setState(() {
-                          _selected2 = newValue;
-                        });
-                      },
-                      child: Center(child: Column(
-                        children: [
-                          Container(margin:const EdgeInsets.only(top:10),child: Lottie.asset('assets/metal.json',height: 60)),
-                          const Text("Metals",style: TextStyle(color: Colors.white),),
-                        ],
-                      )),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child:  SelectableContainer(
-                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
-                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      unselectedBorderColor: Colors.white,
-                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      borderSize: 0,
-                      iconColor: const Color.fromARGB(255,130,36,50),
-                      selected: _selected4,
-                      onValueChanged: (newValue) {
-                        setState(() {
-                          _selected4 = newValue;
-                        });
-                      },
-                      child: Center(child: Column(
-                        children: [
-                          Container(margin:const EdgeInsets.only(top:10),child: Lottie.asset('assets/ewaste.json',height: 60,width: 50)),
-                          const Text("E-Waste",style: TextStyle(color: Colors.white),),
-                        ],
-                      )),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: SelectableContainer(
-                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
-                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      unselectedBorderColor: Colors.white,
-                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-                      borderSize: 0,
-                      iconColor: const Color.fromARGB(255,130,36,50),
-                      selected: _selected5,
-                      onValueChanged: (newValue) {
-                        setState(() {
-                          _selected5 = newValue;
-                        });
-                      },
-                      child: Center(child: Column(
-                        children: [
-                          Container(margin:const EdgeInsets.only(top:10),child: Lottie.asset('assets/other.json',height: 60)),
-                         const Text("Other items",style: TextStyle(color: Colors.white),),
-                        ],
-                      )),
-                    ),
-                  )
+                  IconButton(onPressed: (){
+                    if(_selected||_selected1||_selected2||_selected3||_selected4) {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            Sell(selected1: _selected1,
+                              selected2: _selected2,
+                              selected3: _selected3,
+                              selected4: _selected4,
+                              selected: _selected,),
+                      ),
+                      );
+                    }
+                  },
+                      icon:  Icon(Icons.send,color: _selected||_selected1||_selected2||_selected3||_selected4?const Color.fromARGB(255,130,36,50):const Color.fromARGB(100,130,36,50),)),
                 ],
               ),
-            ),
-            Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 15,left: 15),
-                  width: 300,
-                  child:   const TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search,color: Colors.white,),
-                      hintText: "Pick up address....",
-                      labelStyle: TextStyle(color: Colors.white),
-                      hintStyle: TextStyle(color: Colors.white),
-                      fillColor: Color.fromARGB(255,130,36,50),
-                      filled: true,
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30)))
-                    ),
-                  ),
+
+              Container(
+                margin: const EdgeInsets.only(left: 15,right: 15,bottom: 15,top: 15),
+                height: 150,
+                child: GoogleMap(
+                  mapType: MapType.hybrid,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
                 ),
-                IconButton(onPressed: (){
-
-                  Navigator.push(context, MaterialPageRoute (
-                    builder: (BuildContext context) => const Sell(),
-                  ),
-                  );
-                },
-                    icon: const Icon(Icons.send,color: Color.fromARGB(255,130,36,50),)),
-              ],
-            ),
-
-            Container(
-              margin: const EdgeInsets.only(left: 15,right: 15,bottom: 15,top: 15),
-              height: 150,
-              child: GoogleMap(
-                mapType: MapType.hybrid,
-                initialCameraPosition: _kGooglePlex,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Container buildContainer({required bool selected, required String title,required void Function(bool) onValueChanged}) {
+    return Container(
+                    height: 50,
+                    width: 50,
+                    decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: SelectableContainer(
+                      selectedBorderColor: const Color.fromARGB(255,130,36,50),
+                      selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
+                      unselectedBorderColor: Colors.white,
+                      unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
+                      unselectedOpacity: 1,
+                      borderSize: 0,
+                      iconColor: const Color.fromARGB(255,130,36,50),
+                      selected: selected,
+                      onValueChanged: onValueChanged,
+                     child:  Center(child: Column(
+                        children: [
+                          // Lottie.asset('assets/paper.json',height: 70),
+                           Text(title,style: const TextStyle(color: Colors.white),),
+                        ],
+                      )),
+                    ),
+                  );
   }
 }

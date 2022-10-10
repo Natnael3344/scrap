@@ -116,11 +116,11 @@ class _UploadState extends State<Upload> {
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
                 ),
                 onPressed: (){
-                  Navigator.push(context,
-                    MaterialPageRoute (
-                      builder: (BuildContext context) => const CheckOut(),
-                    ),
-                  );
+                  // Navigator.push(context,
+                  //   MaterialPageRoute (
+                  //     builder: (BuildContext context) => const CheckOut(),
+                  //   ),
+                  // );
                 },
                 child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           ),
