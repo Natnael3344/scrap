@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
-import 'package:lottie/lottie.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:scrap/Screens/rate.dart';
 import 'package:scrap/Screens/sell.dart';
-import 'package:selectable_container/selectable_container.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -34,14 +32,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home",backgroundColor: Color.fromARGB(255,130,36,50)),
-            BottomNavigationBarItem(icon: Icon(Icons.history),label: "Activity"),
-            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Account"),
-            BottomNavigationBarItem(icon: Icon(Icons.monetization_on_outlined),label: "Rate list"),
-          ],
-        ),
+
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -55,7 +46,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 240,
                 child: MultiSelectContainer(
-                  itemsPadding: const EdgeInsets.only(left: 4,right: 4,top: 10,bottom: 10),
+                  itemsPadding: const EdgeInsets.only(left: 5,right: 5,top: 10,bottom: 10),
                   itemsDecoration: MultiSelectDecorations(
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color.fromARGB(255,130,36,50)),
@@ -79,69 +70,35 @@ class _HomeState extends State<Home> {
                   MultiSelectCard(
                     value: 'Paper',
                     child: getChild(
-                        'http://assets.stickpng.com/images/5848152fcef1014c0b5e4967.png',
+                        'https://cdn-icons-png.flaticon.com/512/3073/3073464.png',
                         'Paper'),
                   ),
                   MultiSelectCard(
                     value: 'Plastic',
                     child: getChild(
-                        'http://assets.stickpng.com/images/58480979cef1014c0b5e4901.png',
+                        'https://www.pngall.com/wp-content/uploads/5/Plastic-Bottle-PNG-Image.png',
                         'Plastic'),
                   ),
                   MultiSelectCard(
                     value: 'Metal',
 
                       child: getChild(
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
+                          'https://www.pngall.com/wp-content/uploads/2018/03/Steel-PNG-File-Download-Free.png',
                           'Metal'),
                   ),
                   MultiSelectCard(
                     value: 'E-waste',
                     child: getChild(
-                        'https://seeklogo.com/images/C/c-sharp-c-logo-02F17714BA-seeklogo.com.png',
+                        'https://cdn-icons-png.flaticon.com/512/4380/4380451.png',
                         'E-waste'),
                   ),
                   MultiSelectCard(
                     value: 'Other items',
                     child: getChild(
-                        'https://cdn.freebiesupply.com/logos/thumbs/2x/c-logo.png',
+                        'https://cdn-icons-png.flaticon.com/512/1327/1327264.png',
                         'Other items'),
                   ),
-                    // buildContainer(selected: _selected,title: "Paper",
-                    // onValueChanged: (newValue) {
-                    //   setState(() {
-                    //     _selected = newValue;
-                    //   });
-                    // }
-                    // ),
-                    // buildContainer(selected: _selected1,title: "Plastic",
-                    //     onValueChanged: (newValue) {
-                    //       setState(() {
-                    //         _selected1 = newValue;
-                    //       });
-                    //     }
-                    // ),
-                    // buildContainer(selected: _selected2,title: "Metal",
-                    //     onValueChanged: (newValue) {
-                    //       setState(() {
-                    //         _selected2 = newValue;
-                    //       });
-                    //     }
-                    // ),
-                    // buildContainer(selected: _selected3,title: "E-Waste",
-                    //     onValueChanged: (newValue) {
-                    //       setState(() {
-                    //         _selected3 = newValue;
-                    //       });
-                    //     }
-                    // ),
-                    // buildContainer(selected: _selected4,title: "Other items",
-                    //     onValueChanged: (newValue) {
-                    //       setState(() {
-                    //         _selected4 = newValue;
-                    //       });
-                    //     }
-                    // ),
+
                   ],
                 onChange: (List<String> selectedItems, String selectedItem) {
 
@@ -267,31 +224,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
-  // Container buildContainer({required bool selected, required String title,required void Function(bool) onValueChanged}) {
-  //   return Container(
-  //                   height: 50,
-  //                   width: 50,
-  //                   decoration: const BoxDecoration(color:Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(10))),
-  //                   child: SelectableContainer(
-  //                     selectedBorderColor: const Color.fromARGB(255,130,36,50),
-  //                     selectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-  //                     unselectedBorderColor: Colors.white,
-  //                     unselectedBackgroundColor: const Color.fromARGB(255,130,36,50),
-  //                     unselectedOpacity: 1,
-  //                     borderSize: 0,
-  //                     iconColor: const Color.fromARGB(255,130,36,50),
-  //                     selected: selected,
-  //                     onValueChanged: onValueChanged,
-  //                    child:  Center(child: Column(
-  //                       children: [
-  //                         // Lottie.asset('assets/paper.json',height: 70),
-  //                          Text(title,style: const TextStyle(color: Colors.white),),
-  //                       ],
-  //                     )),
-  //                   ),
-  //                 );
-  // }
   Widget getChild(String imagePath, String title) {
     return SizedBox(
       width: 100,

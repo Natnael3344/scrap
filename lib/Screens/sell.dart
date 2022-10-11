@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:scrap/Screens/cameras.dart';
 import 'package:scrap/Screens/check_out.dart';
+import 'package:scrap/Screens/date.dart';
 import 'package:scrap/database.dart';
 import 'package:selectable_container/selectable_container.dart';
 
@@ -41,8 +42,8 @@ class _SellState extends State<Sell> {
               if(_priceItems.isNotEmpty) {
                 Navigator.push(context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          CheckOut(priceItems: _priceItems)
+                      builder: (BuildContext context) =>const PickDate()
+                          // CheckOut(priceItems: _priceItems)
                     // const TakePictureScreen(picture: []),
                   ),
                 );
