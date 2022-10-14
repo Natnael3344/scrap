@@ -3,9 +3,6 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap/Screens/upload.dart';
-import 'package:scrap/main.dart';
-
-import 'display.dart';
 
 
 class TakePictureScreen extends StatefulWidget{

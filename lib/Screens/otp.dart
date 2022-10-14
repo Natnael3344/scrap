@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:scrap/Screens/home_page.dart';
 
 import 'home.dart';
 
@@ -130,7 +131,7 @@ class _OTPScreenState extends State<OTPScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Home()),
+                                      builder: (context) => const HomePage()),
                                       (route) => false);
                         });
 
@@ -160,7 +161,7 @@ class _OTPScreenState extends State<OTPScreen> {
             if (value.user != null) {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const Home()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                       (route) => false);
             }
           });
@@ -183,113 +184,3 @@ class _OTPScreenState extends State<OTPScreen> {
 
 }
 
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-// import 'package:scrap/Screens/home.dart';
-//
-// class Otp extends StatefulWidget {
-//   const Otp({Key? key, required this.phone}) : super(key: key);
-//   final String phone ;
-//
-//   @override
-//   State<Otp> createState() => _OtpState();
-// }
-//
-// class _OtpState extends State<Otp> {
-//   TextEditingController otpController = TextEditingController();
-//
-//   FirebaseAuth auth = FirebaseAuth.instance;
-//
-//   String verificationID=" ";
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     verifyOTP();
-//     super.initState();
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         titleSpacing: -10,
-//         iconTheme: const IconThemeData(color: Colors.black),
-//         title: const Text("Verify Phone Number",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-//         actions:  [
-//           Center(child: Container(margin: const EdgeInsets.only(right: 10),child: TextButton(onPressed: (){
-//
-//           }, child: TextButton( onPressed: (){
-//             Navigator.push(context,
-//               MaterialPageRoute (
-//                 builder: (BuildContext context) => const Home(),
-//               ),);
-//           },child: const Text("SUBMIT",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black),)))))
-//         ],
-//       ),
-//       body: Column(
-//         children: [
-//           Container(margin: const EdgeInsets.only(top: 20),child: const Text("Please enter the code sent to \n        +917028431151 ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)),
-//           Container(margin: const EdgeInsets.only(top: 40,bottom: 20),child: const Text("ENTER VERIFICATION CODE",style: TextStyle(fontSize: 15,color:Colors.black38),)),
-//           OtpTextField(
-//             numberOfFields: 5,
-//             borderColor: const Color(0xff822432),
-//             focusedBorderColor: const Color(0xff822432),
-//             //set to true to show as box or false to show as dash
-//             showFieldAsBox: true,
-//             //runs when a code is typed in
-//             onCodeChanged: (String code) {
-//               //handle validation or checks here
-//             },
-//             //runs when every textfield is filled
-//             onSubmit: (String verificationCode){
-//               showDialog(
-//                   context: context,
-//                   builder: (context){
-//                     return const AlertDialog(
-//                       title: Text("Verification Code"),
-//                       content: Text('Verified'),
-//                     );
-//                   }
-//               );
-//             }, // end onSubmit
-//           ),
-//           Container(
-//               margin: const EdgeInsets.only(top: 20),
-//               child: const Text("Request new code",style: TextStyle(color: Colors.black38),))
-//         ],
-//       ),
-//     );
-//   }
-//   void verifyOTP() async {
-//     await FirebaseAuth.instance.verifyPhoneNumber(
-//         phoneNumber: widget.phone,
-//         verificationCompleted: (PhoneAuthCredential credential) async {
-//           await FirebaseAuth.instance
-//               .signInWithCredential(credential)
-//               .then((value) async {
-//             if (value.user != null) {
-//               Navigator.pushAndRemoveUntil(
-//                   context,
-//                   MaterialPageRoute(builder: (context) => Home()),
-//                       (route) => false);
-//             }
-//           });
-//         },
-//         verificationFailed: (FirebaseAuthException e) {
-//           print(e.message);
-//         },
-//         codeSent: (String? verificationID, int? resendToken) {
-//           setState(() {
-//             verificationID = verificationID;
-//           });
-//         },
-//         codeAutoRetrievalTimeout: (String verificationID) {
-//           setState(() {
-//             verificationID = verificationID;
-//           });
-//         },
-//         timeout: Duration(seconds: 120));
-//   }
-// }

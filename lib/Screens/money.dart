@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class Money extends StatefulWidget {
   const Money({Key? key}) : super(key: key);
 
@@ -24,10 +26,11 @@ class _MoneyState extends State<Money> {
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
                 ),
                 onPressed: (){
-
-
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomePage()),);
                 },
-                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Submit",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           ),
           body: Padding(
             padding: const EdgeInsets.all(20),
