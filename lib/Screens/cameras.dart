@@ -1,13 +1,15 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap/Screens/upload.dart';
 
 
 class TakePictureScreen extends StatefulWidget{
-    const TakePictureScreen({super.key, required this.picture});
+    const TakePictureScreen({super.key, required this.picture, required this.priceItems});
     final List picture;
+    final List<PriceItem> priceItems;
   @override
   State<TakePictureScreen> createState() => _TakePictureScreenState();
 }
@@ -133,7 +135,7 @@ class _TakePictureScreenState extends State<TakePictureScreen>{
                   Navigator.push(context,
                     MaterialPageRoute(
                       builder: (BuildContext context) =>
-                           Upload(picture: picture1!),
+                           Upload(picture: picture1!,priceItems: widget.priceItems,),
                     ),);
                 }
             },

@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:scrap/Screens/home_page.dart';
 import 'package:scrap/Screens/login.dart';
 
 
@@ -58,7 +59,7 @@ class MyHome extends StatelessWidget {
                     onPressed: (){
                       Navigator.push(context,
                         MaterialPageRoute (
-                          builder: (BuildContext context) =>    const LoginScreen(),
+                          builder: (BuildContext context) =>    const HomePage(),
                         ),
                       );
                     },

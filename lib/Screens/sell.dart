@@ -4,6 +4,8 @@ import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:scrap/Screens/cameras.dart';
 import 'package:scrap/database.dart';
 
+import 'check_out.dart';
+
 class Sell extends StatefulWidget {
   const Sell({Key? key, required this.selected, required this.selected1, required this.selected2, required this.selected3, required this.selected4}) : super(key: key);
   final bool selected;
@@ -42,9 +44,10 @@ class _SellState extends State<Sell> {
                       builder: (BuildContext context) =>
                       // const PickDate()
                           // CheckOut(priceItems: _priceItems)
-                    const TakePictureScreen(picture: []),
+                     TakePictureScreen(picture: const [],priceItems: _priceItems,),
                   ),
                 );
+
               }
             },
             child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),

@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap/Screens/date.dart';
 
@@ -7,8 +8,9 @@ import 'cameras.dart';
 
 
 class Upload extends StatefulWidget {
-  const Upload({Key? key, required this.picture}) : super(key: key);
+  const Upload({Key? key, required this.picture, required this.priceItems}) : super(key: key);
   final List picture;
+  final List<PriceItem> priceItems;
   @override
   State<Upload> createState() => _UploadState();
 }
@@ -95,7 +97,7 @@ class _UploadState extends State<Upload> {
                         child: IconButton(onPressed: (){
                           Navigator.push(context,
                             MaterialPageRoute (
-                              builder: (BuildContext context) =>  TakePictureScreen(picture: widget.picture),
+                              builder: (BuildContext context) =>  TakePictureScreen(picture: widget.picture,priceItems: widget.priceItems,),
                             ),
                           );
                         },
@@ -117,7 +119,7 @@ class _UploadState extends State<Upload> {
                 onPressed: (){
                   Navigator.push(context,
                     MaterialPageRoute (
-                      builder: (BuildContext context) => const PickDate(),
+                      builder: (BuildContext context) =>  PickDate(priceItems: widget.priceItems,),
                     ),
                   );
                 },

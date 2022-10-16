@@ -1,9 +1,11 @@
+import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:scrap/Screens/check_out.dart';
 import 'package:scrap/Screens/money.dart';
 class PickDate extends StatefulWidget {
-  const PickDate({Key? key}) : super(key: key);
-
+  const PickDate({Key? key, required this.priceItems}) : super(key: key);
+  final List<PriceItem> priceItems;
   @override
   State<PickDate> createState() => _PickDateState();
 }
@@ -30,7 +32,7 @@ class _PickDateState extends State<PickDate> {
                   if(date1!='Choose A Date') {
                     Navigator.push(context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) =>const Money()
+                          builder: (BuildContext context) => CheckOut(priceItems: widget.priceItems, date: date1)
                         // CheckOut(priceItems: _priceItems)
                         // const TakePictureScreen(picture: []),
                       ),
