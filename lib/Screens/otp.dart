@@ -131,7 +131,7 @@ class _OTPScreenState extends State<OTPScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomePage()),
+                                      builder: (context) =>  HomePage(phone: widget.phone,)),
                                       (route) => false);
                         });
 
@@ -161,7 +161,7 @@ class _OTPScreenState extends State<OTPScreen> {
             if (value.user != null) {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) =>  HomePage(phone: widget.phone,)),
                       (route) => false);
             }
           });

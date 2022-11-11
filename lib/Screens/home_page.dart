@@ -3,19 +3,28 @@ import 'package:scrap/Screens/home.dart';
 import 'package:scrap/Screens/rate.dart';
 import 'package:scrap/Screens/activity.dart';
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String phone;
+  const HomePage({Key? key, required this.phone}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 class _HomePageState extends State<HomePage> {
-  List<Widget> pageList = [
-    const SizedBox(),
-    const Home(),
-    const Activity(),
-    const Rate(),
-  ];
+
+  List<Widget> pageList=[];
+  @override
+  void initState() {
+    super.initState();
+
+    pageList = [
+      const SizedBox(),
+      Home(phone: widget.phone,),
+      Activity(phone: widget.phone,),
+      const Rate(),
+    ];
+  }
+
   int _selectedIndex = 1;
   void _onItemTapped(int index) {
     index == 0

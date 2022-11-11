@@ -7,7 +7,8 @@ import 'package:scrap/database.dart';
 import 'check_out.dart';
 
 class Sell extends StatefulWidget {
-  const Sell({Key? key, required this.selected, required this.selected1, required this.selected2, required this.selected3, required this.selected4}) : super(key: key);
+  const Sell({Key? key, required this.selected, required this.selected1, required this.selected2, required this.selected3, required this.selected4, required this.phone}) : super(key: key);
+  final String phone;
   final bool selected;
   final bool selected1;
   final bool selected2;
@@ -44,7 +45,7 @@ class _SellState extends State<Sell> {
                       builder: (BuildContext context) =>
                       // const PickDate()
                           // CheckOut(priceItems: _priceItems)
-                     TakePictureScreen(picture: const [],priceItems: _priceItems,),
+                     TakePictureScreen(picture: const [],priceItems: _priceItems,phone: widget.phone,),
                   ),
                 );
 

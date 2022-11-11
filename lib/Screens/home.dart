@@ -5,7 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:scrap/Screens/rate.dart';
 import 'package:scrap/Screens/sell.dart';
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final String phone;
+  const Home({Key? key, required this.phone}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -198,7 +199,9 @@ class _HomeState extends State<Home> {
                               selected2: _selected2,
                               selected3: _selected3,
                               selected4: _selected4,
-                              selected: _selected,),
+                              selected: _selected,
+                              phone: widget.phone,
+                            ),
                       ),
                       );
                     }

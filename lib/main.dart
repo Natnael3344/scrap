@@ -59,7 +59,7 @@ class MyHome extends StatelessWidget {
                     onPressed: (){
                       Navigator.push(context,
                         MaterialPageRoute (
-                          builder: (BuildContext context) =>    const HomePage(),
+                          builder: (BuildContext context) =>    const HomePage(phone: "7028431151"),
                         ),
                       );
                     },

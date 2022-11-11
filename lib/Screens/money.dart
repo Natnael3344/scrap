@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 
 class Money extends StatefulWidget {
-  const Money({Key? key}) : super(key: key);
-
+  const Money({Key? key, required this.phone}) : super(key: key);
+  final String phone;
   @override
   State<Money> createState() => _MoneyState();
 }
@@ -34,7 +34,7 @@ class _MoneyState extends State<Money> {
                   if(select==true||select1==true||select2==true||select3==true) {
                     Navigator.push(context,
                       MaterialPageRoute(
-                          builder: (context) => const HomePage()),);
+                          builder: (context) =>  HomePage(phone: widget.phone,)),);
                   }
                 },
                 child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Submit",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
