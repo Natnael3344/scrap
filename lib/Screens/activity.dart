@@ -102,30 +102,6 @@ class _ActivityState extends State<Activity> {
 
               },
             ),
-          // Center(
-          //   child: ListView.builder(
-          //       scrollDirection: Axis.vertical,
-          //       itemCount: act.length,
-          //       itemBuilder: (context, index) {
-          //         return Padding(
-          //           padding: const EdgeInsets.only(right: 20,left: 20,top: 10,bottom: 10),
-          //           child: Container(
-          //               decoration: BoxDecoration(
-          //                   gradient: LinearGradient(colors: [
-          //                     const Color.fromARGB(255,130,36,50).withOpacity(0.1),
-          //                     Colors.yellow.withOpacity(0.1),
-          //                   ]),
-          //                   border: Border.all(color: const Color.fromARGB(255,130,36,50)),
-          //                   ),
-          //               child: SizedBox(
-          //                 height: 50,
-          //                 width: 150,
-          //                 child: Center(child: Text(act[index],style: const TextStyle(fontWeight: FontWeight.bold))),
-          //               )),
-          //         );
-          //
-          //       }),
-          // ),
     )));
   }
 }

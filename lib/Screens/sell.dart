@@ -1,4 +1,5 @@
 import 'package:checkout_screen_ui/checkout_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:scrap/Screens/cameras.dart';
@@ -19,11 +20,90 @@ class Sell extends StatefulWidget {
 }
 
 class _SellState extends State<Sell> {
+
+
   final List<PriceItem> _priceItems = [
 
   ];
   bool _select=false;
+
+
   Database database=Database();
+  dynamic data;
+  List paper=[];
+  List paperPrice=[];
+  List plastic=[];
+  List plasticPrice=[];
+  List metals=[];
+  List metalsPrice=[];
+  List ewaste=[];
+  List ewastePrice=[];
+  List other=[];
+  List otherPrice=[];
+
+  void readData() {
+    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation").child("paper");
+    databasePaper.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          paper.add(key);
+          paperPrice.add(values);
+        });
+      });
+    } );
+    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation").child("plastic");
+    databasePlastic.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          plastic.add(key);
+          plasticPrice.add(values);
+        });
+
+      });
+    } );
+    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation").child("metals");
+    databaseMetals.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          metals.add(key);
+          metalsPrice.add(values);
+        });
+      });
+    } );
+    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation").child("ewaste");
+    databaseEwaste.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          ewaste.add(key);
+          ewastePrice.add(values);
+        });
+
+      });
+    } );
+    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation").child("other");
+    databaseOther.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          other.add(key);
+          otherPrice.add(values);
+        });
+
+      });
+    } );
+  }
+
+  @override
+  initState() {
+    super.initState();
+    readData();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +144,7 @@ class _SellState extends State<Sell> {
                   child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ),
 
-                buildContainer(database.paper,database.paperPrice,database.paper.length),
+                buildContainer(paper,paperPrice,paper.length),
               ],
             ):const SizedBox(),
             widget.selected1?Column(
@@ -74,7 +154,7 @@ class _SellState extends State<Sell> {
                   padding: EdgeInsets.only(left: 20,top: 20),
                   child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ),
-                buildContainer(database.plastic,database.plasticPrice,database.plastic.length),
+                buildContainer(plastic,plasticPrice,plastic.length),
               ],
             ):const SizedBox(),
             widget.selected2?Column(
@@ -84,7 +164,7 @@ class _SellState extends State<Sell> {
                   padding: EdgeInsets.only(left: 20,top: 20),
                   child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ),
-                buildContainer(database.metals,database.metalsPrice,database.metals.length),
+                buildContainer(metals,metalsPrice,metals.length),
               ],
             ):const SizedBox(),
             widget.selected3?Column(
@@ -94,7 +174,7 @@ class _SellState extends State<Sell> {
                   padding: EdgeInsets.only(left: 20,top: 20),
                   child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ),
-                buildContainer(database.ewaste,database.ewastePrice,database.ewaste.length),
+                buildContainer(ewaste,ewastePrice,ewaste.length),
               ],
             ):const SizedBox(),
             widget.selected4?Column(
@@ -104,7 +184,7 @@ class _SellState extends State<Sell> {
                   padding: EdgeInsets.only(left: 20,top: 20),
                   child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ),
-                buildContainer(database.other,database.otherPrice,database.other.length),
+                buildContainer(other,otherPrice,other.length),
               ],
             ):const SizedBox(),
 
@@ -186,4 +266,4 @@ class _SellState extends State<Sell> {
                     }),
               );
   }
-}
+  }

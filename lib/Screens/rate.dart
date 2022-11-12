@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap/database.dart';
 
@@ -10,6 +11,80 @@ class Rate extends StatefulWidget {
 
 class _RateState extends State<Rate> {
   Database database=Database();
+  List paper=[];
+  List paperPrice=[];
+  List plastic=[];
+  List plasticPrice=[];
+  List metals=[];
+  List metalsPrice=[];
+  List ewaste=[];
+  List ewastePrice=[];
+  List other=[];
+  List otherPrice=[];
+
+  void readData() {
+    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation").child("paper");
+    databasePaper.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          paper.add(key);
+          paperPrice.add(values);
+        });
+      });
+    } );
+    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation").child("plastic");
+    databasePlastic.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          plastic.add(key);
+          plasticPrice.add(values);
+        });
+
+      });
+    } );
+    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation").child("metals");
+    databaseMetals.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          metals.add(key);
+          metalsPrice.add(values);
+        });
+      });
+    } );
+    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation").child("ewaste");
+    databaseEwaste.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          ewaste.add(key);
+          ewastePrice.add(values);
+        });
+
+      });
+    } );
+    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation").child("other");
+    databaseOther.once().then((event) {
+      Map  dataSnapshot = event.snapshot.value as Map;
+      dataSnapshot.forEach((key, values){
+        setState(() {
+          other.add(key);
+          otherPrice.add(values);
+        });
+
+      });
+    } );
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    readData();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +105,7 @@ class _RateState extends State<Rate> {
                     child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
 
-                  buildContainer(database.paper,database.paperPrice,database.paper.length),
+                  buildContainer(paper,paperPrice,paper.length),
                 ],
               ),
               Column(
@@ -40,7 +115,7 @@ class _RateState extends State<Rate> {
                     padding: EdgeInsets.only(left: 20,top: 20),
                     child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
-                  buildContainer(database.plastic,database.plasticPrice,database.plastic.length),
+                  buildContainer(plastic,plasticPrice,plastic.length),
                 ],
               ),
               Column(
@@ -50,7 +125,7 @@ class _RateState extends State<Rate> {
                     padding: EdgeInsets.only(left: 20,top: 20),
                     child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
-                  buildContainer(database.metals,database.metalsPrice,database.metals.length),
+                  buildContainer(metals,metalsPrice,metals.length),
                 ],
               ),
               Column(
@@ -60,7 +135,7 @@ class _RateState extends State<Rate> {
                     padding: EdgeInsets.only(left: 20,top: 20),
                     child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
-                  buildContainer(database.ewaste,database.ewastePrice,database.ewaste.length),
+                  buildContainer(ewaste,ewastePrice,ewaste.length),
                 ],
               ),
               Column(
@@ -70,7 +145,7 @@ class _RateState extends State<Rate> {
                     padding: EdgeInsets.only(left: 20,top: 20),
                     child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
-                  buildContainer(database.other,database.otherPrice,database.other.length),
+                  buildContainer(other,otherPrice,other.length),
                 ],
               ),
 
