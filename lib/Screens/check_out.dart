@@ -142,7 +142,7 @@ class _CheckOutState extends State<CheckOut> {
       'date': date,
     };
 
-    _ref.child(widget.phone).set(save).then((value) {
+    _ref.child(widget.phone).push().set(save).then((value) {
       Navigator.push(context,
         MaterialPageRoute (
           builder: (BuildContext context) =>     Money(phone: widget.phone,),

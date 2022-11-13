@@ -1,7 +1,12 @@
 
 import 'dart:io';
+import 'dart:math';
 import 'package:checkout_screen_ui/checkout_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:scrap/Screens/date.dart';
 
 import 'cameras.dart';
@@ -18,8 +23,10 @@ class Upload extends StatefulWidget {
 
 class _UploadState extends State<Upload> {
   int hide=0;
+  Reference storage= FirebaseStorage.instance.ref();
   @override
   void initState() {
+    storage= FirebaseStorage.instance.ref().child(widget.phone);
     hide=widget.picture.length;
     super.initState();
   }
@@ -118,6 +125,9 @@ class _UploadState extends State<Upload> {
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
                 ),
                 onPressed: (){
+                  for(int i=0;i<widget.picture.length;i++) {
+                    uploadImage(File(widget.picture[i].path));
+                  }
                   Navigator.push(context,
                     MaterialPageRoute (
                       builder: (BuildContext context) =>  PickDate(priceItems: widget.priceItems,phone: widget.phone,),
@@ -129,5 +139,25 @@ class _UploadState extends State<Upload> {
         ],
       ),
     );
+  }
+
+  uploadImage(img) async {
+    // Initialize Firebase once again
+    await Firebase.initializeApp();
+    var random =  Random();
+    var rand = random.nextInt(1000000000);
+    // Give the image a random name
+    String name = "image:$rand";
+    try {
+      await storage.child(name).putFile(img);
+      // await FirebaseStorage.instance
+      // // Give the image a name
+      //     .ref('$name.jpg')
+      // Upload image to firebase
+      //     .putFile(img);
+      print("Uploaded image");
+    } on FirebaseException catch (e) {
+      print(e);
+    }
   }
 }

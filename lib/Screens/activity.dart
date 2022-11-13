@@ -38,7 +38,7 @@ class _ActivityState extends State<Activity> {
   //
   //   return posts;
   // }
-  Query dbRef = FirebaseDatabase.instance.ref().child('Confirmation');
+
   DatabaseReference reference = FirebaseDatabase.instance.ref().child('Confirmation');
 
   Widget listItem({required Map activity}) {
@@ -82,6 +82,7 @@ class _ActivityState extends State<Activity> {
 //   DatabaseEvent event = await ref.once();
   @override
   Widget build(BuildContext context) {
+    Query dbRef = FirebaseDatabase.instance.ref().child('Confirmation').child(widget.phone);
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
