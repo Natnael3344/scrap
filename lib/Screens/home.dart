@@ -2,8 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:scrap/Screens/rate.dart';
+import 'package:scrap/Screens/search.dart';
 import 'package:scrap/Screens/sell.dart';
+
 class Home extends StatefulWidget {
   final String phone;
   const Home({Key? key, required this.phone}) : super(key: key);
@@ -19,6 +20,12 @@ class _HomeState extends State<Home> {
    bool _selected2=false;
    bool _selected3=false;
    bool _selected4=false;
+ TextEditingController controller=TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
@@ -177,8 +184,9 @@ class _HomeState extends State<Home> {
                       const Color.fromARGB(255,130,36,50).withOpacity(0.1),
                       Colors.yellow.withOpacity(0.1),
                     ]),),
-                    child:    const TextField(
-                      decoration: InputDecoration(
+                    child:    TextField(
+                      controller: controller,
+                      decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.search,color: Colors.black,),
                         hintText: "Pick up address....",
                         labelStyle: TextStyle(color: Colors.black),
@@ -200,7 +208,7 @@ class _HomeState extends State<Home> {
                               selected3: _selected3,
                               selected4: _selected4,
                               selected: _selected,
-                              phone: widget.phone,
+                              phone: widget.phone, address: controller.text,
                             ),
                       ),
                       );
@@ -221,12 +229,16 @@ class _HomeState extends State<Home> {
                   },
                 ),
               ),
+
             ],
           ),
         ),
       ),
     );
   }
+
+
+
   Widget getChild(String imagePath, String title) {
     return SizedBox(
       width: 100,

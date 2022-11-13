@@ -1,10 +1,15 @@
+import 'package:checkout_screen_ui/checkout_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
 
 class Money extends StatefulWidget {
-  const Money({Key? key, required this.phone}) : super(key: key);
+  const Money({Key? key, required this.phone, required this.priceItems, required this.date, required this.address}) : super(key: key);
   final String phone;
+  final List<PriceItem> priceItems;
+  final String date;
+  final String address;
   @override
   State<Money> createState() => _MoneyState();
 }
@@ -14,7 +19,18 @@ class _MoneyState extends State<Money> {
   bool select1=false;
   bool select2=false;
   bool select3=false;
-
+  String pay='';
+  String method='UPI';
+  String method1='Paytm wallet';
+  String method2='Bank Account';
+  String method3='Cash';
+  late DatabaseReference _ref;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _ref = FirebaseDatabase.instance.ref().child('Confirmation');
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,11 +47,7 @@ class _MoneyState extends State<Money> {
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(select==true||select1==true||select2==true||select3==true?const Color.fromARGB(255,130,36,50):const Color.fromARGB(100,130,36,50))
                 ),
                 onPressed: (){
-                  if(select==true||select1==true||select2==true||select3==true) {
-                    Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) =>  HomePage(phone: widget.phone,)),);
-                  }
+                  saveConfirmation();
                 },
                 child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Submit",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           ),
@@ -53,6 +65,7 @@ class _MoneyState extends State<Money> {
                         select1=false;
                         select2=false;
                         select3=false;
+                        pay=method;
                       }
                     });
 
@@ -76,6 +89,7 @@ class _MoneyState extends State<Money> {
                         select=false;
                         select2=false;
                         select3=false;
+                        pay=method1;
                       }
                     });
 
@@ -99,6 +113,7 @@ class _MoneyState extends State<Money> {
                         select=false;
                         select1=false;
                         select3=false;
+                        pay=method2;
                       }
                     });
 
@@ -122,6 +137,7 @@ class _MoneyState extends State<Money> {
                         select=false;
                         select2=false;
                         select1=false;
+                        pay=method3;
                       }
                     });
 
@@ -141,5 +157,44 @@ class _MoneyState extends State<Money> {
             ),
           )),
     );
+  }
+  void saveConfirmation() {
+    // List items = widget.priceItems.toList();
+    String address = "1, Tulsi vihar, Jaitala, 440035, Nagpur";
+    String phone=widget.phone;
+    String date=widget.date;
+    List<String> name=[];
+    List<String> price=[];
+    List<dynamic> item() {
+      for (var item in widget.priceItems) {
+        name.add(item.name);
+      }
+      return name.toList();
+    }
+    print(item);
+
+    List<dynamic> item1() {
+      for (int i=0;i<name.length;i++) {
+        price.add(widget.priceItems[i].price);
+      }
+      return price.toList();
+    }
+    print(item1());
+    Map<String, dynamic> save = {
+      'name': item(),
+      'price': item1(),
+      'address':  widget.address,
+      'phone': phone,
+      'date': date,
+      'Payment':pay
+    };
+
+    _ref.child(widget.phone).push().set(save).then((value) {
+      if(select==true||select1==true||select2==true||select3==true) {
+        Navigator.push(context,
+          MaterialPageRoute(
+              builder: (context) =>  HomePage(phone: widget.phone,)),);
+      }
+    });
   }
 }

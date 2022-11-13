@@ -7,8 +7,9 @@ import 'package:scrap/Screens/upload.dart';
 
 
 class TakePictureScreen extends StatefulWidget{
-    const TakePictureScreen({super.key, required this.picture, required this.priceItems, required this.phone});
+    const TakePictureScreen({super.key, required this.picture, required this.priceItems, required this.phone, required this.address});
     final String phone;
+    final String address;
     final List picture;
     final List<PriceItem> priceItems;
   @override
@@ -136,7 +137,7 @@ class _TakePictureScreenState extends State<TakePictureScreen>{
                   Navigator.push(context,
                     MaterialPageRoute(
                       builder: (BuildContext context) =>
-                           Upload(picture: picture1!,priceItems: widget.priceItems,phone: widget.phone,),
+                           Upload(picture: picture1!,priceItems: widget.priceItems,phone: widget.phone, address: widget.address,),
                     ),);
                 }
             },

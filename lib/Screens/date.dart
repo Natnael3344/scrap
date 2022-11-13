@@ -4,8 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:scrap/Screens/check_out.dart';
 import 'package:scrap/Screens/money.dart';
 class PickDate extends StatefulWidget {
-  const PickDate({Key? key, required this.priceItems, required this.phone}) : super(key: key);
+  const PickDate({Key? key, required this.priceItems, required this.phone, required this.address}) : super(key: key);
   final String phone;
+  final String address;
   final List<PriceItem> priceItems;
   @override
   State<PickDate> createState() => _PickDateState();
@@ -33,7 +34,7 @@ class _PickDateState extends State<PickDate> {
                   if(date1!='Choose A Date') {
                     Navigator.push(context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => CheckOut(priceItems: widget.priceItems, date: date1, phone: widget.phone,)
+                          builder: (BuildContext context) => CheckOut(priceItems: widget.priceItems, date: date1, phone: widget.phone, address: widget.address,)
                         // CheckOut(priceItems: _priceItems)
                         // const TakePictureScreen(picture: []),
                       ),

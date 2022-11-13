@@ -13,8 +13,9 @@ import 'cameras.dart';
 
 
 class Upload extends StatefulWidget {
-  const Upload({Key? key, required this.picture, required this.priceItems, required this.phone}) : super(key: key);
+  const Upload({Key? key, required this.picture, required this.priceItems, required this.phone, required this.address}) : super(key: key);
   final String phone;
+  final String address;
   final List picture;
   final List<PriceItem> priceItems;
   @override
@@ -105,7 +106,7 @@ class _UploadState extends State<Upload> {
                         child: IconButton(onPressed: (){
                           Navigator.push(context,
                             MaterialPageRoute (
-                              builder: (BuildContext context) =>  TakePictureScreen(picture: widget.picture,priceItems: widget.priceItems, phone: widget.phone,),
+                              builder: (BuildContext context) =>  TakePictureScreen(picture: widget.picture,priceItems: widget.priceItems, phone: widget.phone, address: widget.address,),
                             ),
                           );
                         },
@@ -130,7 +131,7 @@ class _UploadState extends State<Upload> {
                   }
                   Navigator.push(context,
                     MaterialPageRoute (
-                      builder: (BuildContext context) =>  PickDate(priceItems: widget.priceItems,phone: widget.phone,),
+                      builder: (BuildContext context) =>  PickDate(priceItems: widget.priceItems,phone: widget.phone, address: widget.address,),
                     ),
                   );
                 },

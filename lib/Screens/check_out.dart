@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:scrap/Screens/money.dart';
 
 class CheckOut extends StatefulWidget {
-  const CheckOut({Key? key, required this.priceItems, required this.date, required this.phone}) : super(key: key);
+  const CheckOut({Key? key, required this.priceItems, required this.date, required this.phone, required this.address}) : super(key: key);
   final String phone;
+  final String address;
   final List<PriceItem> priceItems;
   final String date;
   @override
@@ -15,13 +16,7 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  late DatabaseReference _ref;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _ref = FirebaseDatabase.instance.ref().child('Confirmation');
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +32,11 @@ class _CheckOutState extends State<CheckOut> {
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
             ),
             onPressed: (){
-              saveConfirmation();
+              Navigator.push(context,
+                MaterialPageRoute (
+                  builder: (BuildContext context) =>     Money(phone: widget.phone, priceItems: widget.priceItems, date: widget.date, address: widget.address,),
+                ),
+              );
 
             },
             child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Confirm",style: TextStyle(fontSize: 16),))),
@@ -69,14 +68,14 @@ class _CheckOutState extends State<CheckOut> {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Padding(
+              children:  [
+                const Padding(
                   padding: EdgeInsets.only(left: 20,top: 20),
                   child: Text("Address - Home",style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("1, Tulsi vihar, Jaitala, 440035, Nagpur"),
+                  padding: const EdgeInsets.only(left: 20,top: 20),
+                  child: Text(widget.address),
                 )
               ],
             ),
@@ -112,42 +111,5 @@ class _CheckOutState extends State<CheckOut> {
       ),
     );
   }
-  void saveConfirmation() {
-    // List items = widget.priceItems.toList();
-    String address = "1, Tulsi vihar, Jaitala, 440035, Nagpur";
-    String phone=widget.phone;
-    String date=widget.date;
-    List<String> name=[];
-    List<String> price=[];
-    List<dynamic> item() {
-      for (var item in widget.priceItems) {
-        name.add(item.name);
-      }
-      return name.toList();
-    }
-    print(item);
 
-    List<dynamic> item1() {
-      for (var item in widget.priceItems) {
-        price.add(item.price);
-      }
-      return price.toList();
-    }
-    print(item1());
-    Map<String, dynamic> save = {
-      'name': item(),
-      'price': item1(),
-      'address':  address,
-      'phone': phone,
-      'date': date,
-    };
-
-    _ref.child(widget.phone).push().set(save).then((value) {
-      Navigator.push(context,
-        MaterialPageRoute (
-          builder: (BuildContext context) =>     Money(phone: widget.phone,),
-        ),
-      );
-    });
-  }
 }
