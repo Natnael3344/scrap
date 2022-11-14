@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:scrap/Screens/about.dart';
+import 'package:scrap/Screens/call.dart';
+import 'package:scrap/Screens/guide.dart';
 import 'package:scrap/Screens/home.dart';
+import 'package:scrap/Screens/profile.dart';
 import 'package:scrap/Screens/rate.dart';
 import 'package:scrap/Screens/activity.dart';
 class HomePage extends StatefulWidget {
@@ -10,9 +15,14 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+
 class _HomePageState extends State<HomePage> {
 
   List<Widget> pageList=[];
+
+  get videoEnable => null;
+
+  get file => null;
   @override
   void initState() {
     super.initState();
@@ -60,12 +70,12 @@ class _HomePageState extends State<HomePage> {
                 margin: const EdgeInsets.only(left: 18),
                 child: ListTile(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) => const Dashboard(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const Profile(),
+                        ),
+                      );
                     },
                     title: const Text(
                       "Profile",
@@ -76,28 +86,12 @@ class _HomePageState extends State<HomePage> {
                 margin: const EdgeInsets.only(left: 18),
                 child: ListTile(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) =>   const AssetsList(),
-                      //   ),
-                      // );
-                    },
-                    title: const Text(
-                      "Share",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
-                    )),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 18),
-                child: ListTile(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) => const TransactionsList(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const Guide(),
+                        ),
+                      );
                     },
                     title: const Text(
                       "How it works",
@@ -108,12 +102,12 @@ class _HomePageState extends State<HomePage> {
                 margin: const EdgeInsets.only(left: 18),
                 child: ListTile(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (BuildContext context) => const Dashboard(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const About(),
+                        ),
+                      );
                     },
                     title: const Text(
                       "About",
@@ -124,10 +118,11 @@ class _HomePageState extends State<HomePage> {
                 margin: const EdgeInsets.only(left: 18),
                 child: ListTile(
                     onTap: () {
+                      _callNumber();
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
-                      //     builder: (BuildContext context) => const Dashboard(),
+                      //     builder: (BuildContext context) => const Call(),
                       //   ),
                       // );
                     },
@@ -154,5 +149,9 @@ class _HomePageState extends State<HomePage> {
         body: pageList.elementAt(_selectedIndex),
       ),
     );
+  }
+  _callNumber() async{
+    const number = '+917028431151'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
   }
 }

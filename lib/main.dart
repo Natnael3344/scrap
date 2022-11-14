@@ -1,8 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:scrap/Screens/home_page.dart';
 import 'package:scrap/Screens/login.dart';
+import 'package:scrap/Screens/name.dart';
 
 
 List<CameraDescription>? cameras;
@@ -25,8 +27,22 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
+
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  late DatabaseReference _ref;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _ref = FirebaseDatabase.instance.ref().child('Confirmation').child("7028431151");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +72,8 @@ class MyHome extends StatelessWidget {
                 child: ElevatedButton(
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
                     ),
-                    onPressed: (){
-                      Navigator.push(context,
-                        MaterialPageRoute (
-                          builder: (BuildContext context) =>    const HomePage(phone: "7028431151"),
-                        ),
-                      );
+                    onPressed: ()  {
+                      check();
                     },
                     child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue with Phone Number",style: TextStyle(fontSize: 16),))),
               ),
@@ -71,5 +83,29 @@ class MyHome extends StatelessWidget {
         ),
       ),
     );
+  }
+  void check() async
+  {
+    var snapshot =  await _ref.once();
+    if(snapshot.snapshot.hasChild("Profile")) {
+      if (!mounted) return;
+      Navigator.push(context,
+        MaterialPageRoute(
+          builder: (BuildContext context) =>
+          const HomePage(phone: "7028431151"),
+        ),
+      );
+    }
+    else{
+      if (!mounted) return;
+      Navigator.push(context,
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+            const Name(phone: "7028431151",)
+          // HomePage(phone: "7028431151"),
+        ),
+      );
+
+    }
   }
 }
