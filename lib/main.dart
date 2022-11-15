@@ -2,8 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/Screens/home_page.dart';
-import 'package:scrap/Screens/login.dart';
 import 'package:scrap/Screens/name.dart';
 
 
@@ -36,9 +36,9 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   late DatabaseReference _ref;
-
+  bool loading=true;
   @override
-  void initState() {
+   initState()  {
     // TODO: implement initState
     super.initState();
     _ref = FirebaseDatabase.instance.ref().child('Confirmation').child("7028431151");
@@ -73,7 +73,37 @@ class _MyHomeState extends State<MyHome> {
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255,130,36,50))
                     ),
                     onPressed: ()  {
-                      check();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                fullscreenDialog: false,
+                                builder: (ctx) {
+                                  return const SafeArea(
+                                    child: Scaffold(
+                                      backgroundColor: Colors.white,
+                                      // appBar: AppBar(
+                                      // title: Text(indicator.toString().split('.').last),
+                                      // ),
+                                        body: Padding(
+                                          padding: EdgeInsets.all(125),
+                                          child: Center(
+                                              child: LoadingIndicator(
+                                                  indicatorType: Indicator.lineScalePulseOut,
+                                                  colors: [
+                                                    Color.fromARGB(255,130,36,50),
+                                                  ],
+                                                  strokeWidth: 0.5,
+                                                  backgroundColor: Colors.white,
+                                                  pathBackgroundColor: Colors.white
+                                              )
+                                          ),
+                                        )
+                                    ),
+                                  );
+                                }
+                            )
+                        );
+                        check();
                     },
                     child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue with Phone Number",style: TextStyle(fontSize: 16),))),
               ),

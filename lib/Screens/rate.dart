@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/database.dart';
 
 class Rate extends StatefulWidget {
@@ -87,7 +88,28 @@ class _RateState extends State<Rate> {
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return other.isEmpty||paper.isEmpty||plastic.isEmpty||metals.isEmpty||ewaste.isEmpty? const SafeArea(
+      child: Scaffold(
+          backgroundColor: Colors.white,
+          // appBar: AppBar(
+          // title: Text(indicator.toString().split('.').last),
+          // ),
+          body: Padding(
+            padding: EdgeInsets.all(125),
+            child: Center(
+                child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [
+                      Color.fromARGB(255,130,36,50),
+                    ],
+                    strokeWidth: 0.5,
+                    backgroundColor: Colors.white,
+                    pathBackgroundColor: Colors.white
+                )
+            ),
+          )
+      ),
+    ):SafeArea(
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,

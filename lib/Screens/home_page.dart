@@ -70,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                 margin: const EdgeInsets.only(left: 18),
                 child: ListTile(
                     onTap: () {
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(

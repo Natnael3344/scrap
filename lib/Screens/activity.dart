@@ -38,44 +38,60 @@ class _ActivityState extends State<Activity> {
   //
   //   return posts;
   // }
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserAmount();
+  }
   DatabaseReference reference = FirebaseDatabase.instance.ref().child('Confirmation');
 
-  Widget listItem({required Map activity}) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(10),
-      height: 110,
-      color: Colors.amberAccent,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            activity['name'].toString().replaceAll('[', '').replaceAll(']', ''),
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            "for Amount ${activity['price'].toString().replaceAll('[', '').replaceAll(']', '')}",
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            activity['address'],
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-          Text(
-            activity['date'],
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-        ],
-      ),
-    );
+  Widget listItem({required  Map activity}) {
+    if(activity.containsKey(null)) {
+      return SizedBox();
+    }
+    else{
+      return Container(
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        height: 110,
+        color: Colors.amberAccent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              activity['name'].toString().replaceAll('[', '').replaceAll(
+                  ']', ''),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              "for Amount ${activity['price'].toString()
+                  .replaceAll('[', '')
+                  .replaceAll(']', '')}",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              activity['address'].toString().replaceAll('[', '').replaceAll(
+                  ']', ''),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+            Text(
+              activity['date'].toString().replaceAll('[', '').replaceAll(
+                  ']', ''),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
+      );
+    }
+
   }
 
 // Get the data once
@@ -83,6 +99,8 @@ class _ActivityState extends State<Activity> {
   @override
   Widget build(BuildContext context) {
     Query dbRef = FirebaseDatabase.instance.ref().child('Confirmation').child(widget.phone);
+
+
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
@@ -94,15 +112,50 @@ class _ActivityState extends State<Activity> {
             height: double.infinity,
             child: FirebaseAnimatedList(
               query: dbRef,
-              itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
-
-                Map activity = snapshot.value as Map;
-                activity['key'] = snapshot.key;
-
-                return listItem(activity: activity);
-
+              itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation,  int index) {
+                  Map activity = snapshot.value as Map;
+                  activity['key'] = snapshot.key;
+                  print("object kdfkdfkdlk kldfkdlfkdlfk kdlfkdlfkdlfk");
+                  print(activity);
+                  if(!activity.containsKey('Profile')&&activity['name']!=null) {
+                    return listItem(activity: activity);
+                  }
+                  else{
+                    return const SizedBox();
+                  }
               },
             ),
     )));
+  }
+  // void load(){
+  //   FirebaseAnimatedList(
+  //     query: dbRef,
+  //     itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+  //       setState(() {
+  //         activity = snapshot.value as Map;
+  //         activity['key'] = snapshot.key;
+  //       });
+  //       return listItem(activity: activity);
+  //
+  //     },
+  //   ),
+  // }
+   int getUserAmount()  {
+     final response = FirebaseDatabase.instance.ref().child('Confirmation').child(widget.phone);
+    List users = [];
+     response.once().then((event) {
+       Map  dataSnapshot = event.snapshot.value as Map;
+       dataSnapshot.forEach((key, values){
+         setState(() {
+           users.add(key);
+         });
+       });
+     }
+     );
+     print("object klklk  kl kj  kl kl  ");
+     print(users.length);
+     print(users);
+    return users.length-1;
+
   }
 }

@@ -2,6 +2,7 @@ import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/Screens/cameras.dart';
 import 'package:scrap/database.dart';
 
@@ -107,89 +108,112 @@ class _SellState extends State<Sell> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Sell scrap"),
-        backgroundColor: const Color.fromARGB(255,130,36,50),
-      ),
-      bottomNavigationBar: Container(
-        width: double.maxFinite,
-        margin: const EdgeInsets.all(20),
-        height: 50,
-        child: ElevatedButton(
-            style: ButtonStyle(backgroundColor: _priceItems.isNotEmpty?MaterialStateProperty.all(const Color.fromARGB(255,130,36,50)):MaterialStateProperty.all(const Color.fromARGB(100,130,36,50))
+    return other.isEmpty||paper.isEmpty||plastic.isEmpty||metals.isEmpty||ewaste.isEmpty? const SafeArea(
+      child: Scaffold(
+          backgroundColor: Colors.white,
+          // appBar: AppBar(
+          // title: Text(indicator.toString().split('.').last),
+          // ),
+          body: Padding(
+            padding: EdgeInsets.all(125),
+            child: Center(
+                child: LoadingIndicator(
+                    indicatorType: Indicator.lineScalePulseOut,
+                    colors: [
+                      Color.fromARGB(255,130,36,50),
+                    ],
+                    strokeWidth: 0.5,
+                    backgroundColor: Colors.white,
+                    pathBackgroundColor: Colors.white
+                )
             ),
-            onPressed: (){
-              if(_priceItems.isNotEmpty) {
-                Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                      // const PickDate()
-                          // CheckOut(priceItems: _priceItems)
-                     TakePictureScreen(picture: const [],priceItems: _priceItems,phone: widget.phone, address: widget.address,),
-                  ),
-                );
-
-              }
-            },
-            child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+          )
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            widget.selected?Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ),
+    ):SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Sell scrap"),
+          backgroundColor: const Color.fromARGB(255,130,36,50),
+        ),
+        bottomNavigationBar: Container(
+          width: double.maxFinite,
+          margin: const EdgeInsets.all(20),
+          height: 50,
+          child: ElevatedButton(
+              style: ButtonStyle(backgroundColor: _priceItems.isNotEmpty?MaterialStateProperty.all(const Color.fromARGB(255,130,36,50)):MaterialStateProperty.all(const Color.fromARGB(100,130,36,50))
+              ),
+              onPressed: (){
+                if(_priceItems.isNotEmpty) {
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                        // const PickDate()
+                            // CheckOut(priceItems: _priceItems)
+                       TakePictureScreen(picture: const [],priceItems: _priceItems,phone: widget.phone, address: widget.address,),
+                    ),
+                  );
 
-                buildContainer(paper,paperPrice,paper.length),
-              ],
-            ):const SizedBox(),
-            widget.selected1?Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ),
-                buildContainer(plastic,plasticPrice,plastic.length),
-              ],
-            ):const SizedBox(),
-            widget.selected2?Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ),
-                buildContainer(metals,metalsPrice,metals.length),
-              ],
-            ):const SizedBox(),
-            widget.selected3?Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ),
-                buildContainer(ewaste,ewastePrice,ewaste.length),
-              ],
-            ):const SizedBox(),
-            widget.selected4?Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                ),
-                buildContainer(other,otherPrice,other.length),
-              ],
-            ):const SizedBox(),
+                }
+              },
+              child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              widget.selected?Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
 
-          ],
+                  buildContainer(paper,paperPrice,paper.length),
+                ],
+              ):const SizedBox(),
+              widget.selected1?Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
+                  buildContainer(plastic,plasticPrice,plastic.length),
+                ],
+              ):const SizedBox(),
+              widget.selected2?Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
+                  buildContainer(metals,metalsPrice,metals.length),
+                ],
+              ):const SizedBox(),
+              widget.selected3?Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20,top: 20),
+                    child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
+                  buildContainer(ewaste,ewastePrice,ewaste.length),
+                ],
+              ):const SizedBox(),
+              widget.selected4?Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
+                  buildContainer(other,otherPrice,other.length),
+                ],
+              ):const SizedBox(),
+
+            ],
+          ),
         ),
       ),
     );
