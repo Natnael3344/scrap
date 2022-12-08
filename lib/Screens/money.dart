@@ -29,7 +29,7 @@ class _MoneyState extends State<Money> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _ref = FirebaseDatabase.instance.ref().child('Confirmation');
+    _ref = FirebaseDatabase.instance.ref().child("Customers").child(widget.phone).child("Requests");
   }
   @override
   Widget build(BuildContext context) {
@@ -189,7 +189,7 @@ class _MoneyState extends State<Money> {
       'Payment':pay
     };
 
-    _ref.child(widget.phone).push().set(save).then((value) {
+    _ref.push().set(save).then((value) {
       if(select==true||select1==true||select2==true||select3==true) {
         Navigator.push(context,
           MaterialPageRoute(

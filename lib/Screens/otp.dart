@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:scrap/Screens/home_page.dart';
 
 import 'home.dart';
+import 'name.dart';
 
 class OTPScreen extends StatefulWidget {
   final String phone;
@@ -17,12 +19,13 @@ class _OTPScreenState extends State<OTPScreen> {
   String? _verificationCode;
   bool verified=true;
   final TextEditingController _pinPutController = TextEditingController();
-
+  late DatabaseReference _ref;
   @override
   void initState() {
     // TODO: implement initState
     _verifyPhone();
     super.initState();
+    _ref = FirebaseDatabase.instance.ref().child("Customers").child(widget.phone);
   }
   @override
   void dispose(){
@@ -128,11 +131,12 @@ class _OTPScreenState extends State<OTPScreen> {
                         Navigator.pop(context);
                         showLoaderDialog1(context);
                         Future.delayed(const Duration(seconds: 1), () {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>  HomePage(phone: widget.phone,)),
-                                      (route) => false);
+                          check();
+                              // Navigator.pushAndRemoveUntil(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>  HomePage(phone: widget.phone,)),
+                              //         (route) => false);
                         });
 
                       }
@@ -180,6 +184,28 @@ class _OTPScreenState extends State<OTPScreen> {
           });
         },
         timeout: const Duration(seconds: 120));
+  }
+  void check() async
+  {
+    var snapshot =  await _ref.once();
+
+    if(snapshot.snapshot.hasChild("Profile")) {
+      if (!mounted) return;
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) =>  HomePage(phone: widget.phone,)),
+              (route) => false);
+    }
+    else{
+      if (!mounted) return;
+      Navigator.push(context,
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+                Name(phone: widget.phone)
+          // HomePage(phone: "7028431151"),
+        ),
+      );
+    }
   }
 
 }

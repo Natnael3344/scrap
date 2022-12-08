@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class Name extends StatefulWidget {
   const Name({Key? key, required this.phone}) : super(key: key);
   final String phone;
@@ -22,7 +24,7 @@ class _NameState extends State<Name> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _ref = FirebaseDatabase.instance.ref().child('Confirmation').child("7028431151").child('Profile');
+    _ref = FirebaseDatabase.instance.ref().child("Customers").child(widget.phone).child('Profile');
   }
   @override
   Widget build(BuildContext context) {
@@ -149,9 +151,9 @@ class _NameState extends State<Name> {
 
     _ref.set(save).then((value) {
       // if(select==true||select1==true||select2==true||select3==true) {
-      //   Navigator.push(context,
-      //     MaterialPageRoute(
-      //         builder: (context) =>  HomePage(phone: widget.phone,)),);
+        Navigator.push(context,
+          MaterialPageRoute(
+              builder: (context) =>  HomePage(phone: widget.phone,)),);
       // }
     });
   }

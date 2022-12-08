@@ -44,7 +44,7 @@ class _ActivityState extends State<Activity> {
     super.initState();
     getUserAmount();
   }
-  DatabaseReference reference = FirebaseDatabase.instance.ref().child('Confirmation');
+  DatabaseReference reference = FirebaseDatabase.instance.ref().child('Customers');
 
   Widget listItem({required  Map activity}) {
     if(activity.containsKey(null)) {
@@ -55,7 +55,12 @@ class _ActivityState extends State<Activity> {
         margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(10),
         height: 110,
-        color: Colors.amberAccent,
+        decoration: BoxDecoration(
+            gradient:LinearGradient(colors: [
+              const Color.fromARGB(255,130,36,50).withOpacity(0.1),
+              Colors.yellow.withOpacity(0.1),
+            ])
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +103,7 @@ class _ActivityState extends State<Activity> {
 //   DatabaseEvent event = await ref.once();
   @override
   Widget build(BuildContext context) {
-    Query dbRef = FirebaseDatabase.instance.ref().child('Confirmation').child(widget.phone);
+    Query dbRef = FirebaseDatabase.instance.ref().child("Customers").child(widget.phone).child("Requests");
 
 
     return SafeArea(
@@ -141,7 +146,7 @@ class _ActivityState extends State<Activity> {
   //   ),
   // }
    int getUserAmount()  {
-     final response = FirebaseDatabase.instance.ref().child('Confirmation').child(widget.phone);
+     final response = FirebaseDatabase.instance.ref().child('Customers').child(widget.phone).child("Requests");
     List users = [];
      response.once().then((event) {
        Map  dataSnapshot = event.snapshot.value as Map;

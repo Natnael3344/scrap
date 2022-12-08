@@ -7,7 +7,8 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/Screens/money.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key,}) : super(key: key);
+  final String phone;
+  const Profile({Key? key, required this.phone,}) : super(key: key);
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -77,7 +78,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20,top: 20),
-                    child: Text("7028431151",style: const TextStyle(fontSize: 20),),
+                    child: Text(widget.phone,style: const TextStyle(fontSize: 20),),
                   )
                 ],
               ),
@@ -102,8 +103,8 @@ class _ProfileState extends State<Profile> {
   }
   void readData() {
     final databasePaper = FirebaseDatabase.instance.ref()
-        .child("Confirmation")
-        .child("7028431151").child("Profile");
+        .child("Customers")
+        .child(widget.phone).child("Profile");
     databasePaper.once().then((event) {
       Map dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values) {

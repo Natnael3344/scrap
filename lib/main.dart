@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/Screens/home_page.dart';
+import 'package:scrap/Screens/login.dart';
 import 'package:scrap/Screens/name.dart';
 
 
@@ -35,13 +36,11 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  late DatabaseReference _ref;
   bool loading=true;
   @override
    initState()  {
     // TODO: implement initState
     super.initState();
-    _ref = FirebaseDatabase.instance.ref().child('Confirmation').child("7028431151");
   }
 
   @override
@@ -116,26 +115,15 @@ class _MyHomeState extends State<MyHome> {
   }
   void check() async
   {
-    var snapshot =  await _ref.once();
-    if(snapshot.snapshot.hasChild("Profile")) {
+
+
       if (!mounted) return;
       Navigator.push(context,
         MaterialPageRoute(
           builder: (BuildContext context) =>
-          const HomePage(phone: "7028431151"),
-        ),
-      );
-    }
-    else{
-      if (!mounted) return;
-      Navigator.push(context,
-        MaterialPageRoute(
-            builder: (BuildContext context) =>
-            const Name(phone: "7028431151",)
-          // HomePage(phone: "7028431151"),
+          const LoginScreen(),
         ),
       );
 
-    }
   }
 }
