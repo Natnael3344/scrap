@@ -4,6 +4,7 @@ import 'package:scrap/Screens/about.dart';
 import 'package:scrap/Screens/call.dart';
 import 'package:scrap/Screens/guide.dart';
 import 'package:scrap/Screens/home.dart';
+import 'package:scrap/Screens/language.dart';
 import 'package:scrap/Screens/profile.dart';
 import 'package:scrap/Screens/rate.dart';
 import 'package:scrap/Screens/activity.dart';
@@ -112,6 +113,22 @@ class _HomePageState extends State<HomePage> {
                     },
                     title: const Text(
                       "About",
+                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    )),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 18),
+                child: ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const Language(),
+                        ),
+                      );
+                    },
+                    title: const Text(
+                      "Language",
                       style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),

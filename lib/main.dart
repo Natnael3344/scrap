@@ -2,10 +2,15 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:scrap/Screens/home_page.dart';
 import 'package:scrap/Screens/login.dart';
 import 'package:scrap/Screens/name.dart';
+
+import 'LanguageChangeProvider.dart';
+import 'generated/l10n.dart';
 
 
 List<CameraDescription>? cameras;
@@ -22,9 +27,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-      home: MyHome()
+    return ChangeNotifierProvider<LanguageChangeProvider>(
+      create: (context) =>  LanguageChangeProvider(),
+      child: Builder(
+          builder: (context) =>
+        MaterialApp(
+           locale: Provider.of<LanguageChangeProvider>(context, listen: true).currentLocale,
+           localizationsDelegates: const [
+             S.delegate,
+             GlobalMaterialLocalizations.delegate,
+             GlobalWidgetsLocalizations.delegate,
+             GlobalCupertinoLocalizations.delegate,
+           ],
+           supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+        home: const MyHome()
+      ),
+    )
     );
   }
 }

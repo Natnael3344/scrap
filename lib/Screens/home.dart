@@ -5,6 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:scrap/Screens/search.dart';
 import 'package:scrap/Screens/sell.dart';
 
+import '../generated/l10n.dart';
+
 class Home extends StatefulWidget {
   final String phone;
   const Home({Key? key, required this.phone}) : super(key: key);
@@ -52,7 +54,11 @@ class _HomeState extends State<Home> {
                   height: 150,
                   width: double.maxFinite,
                   decoration: const BoxDecoration(color: Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child:  const Center(child: Text("What would you like to sell?",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
+                  child:   Center(child:
+                  Text(S.of(context).welcomeText,style: const TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                  // Text("What would you like to sell?",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)
+                  ),
+
                 ),
                 SizedBox(
                   height: 240,
