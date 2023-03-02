@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'home_page.dart';
 
@@ -96,7 +97,7 @@ class _NameState extends State<Name> {
                 },
                     (val) {
                       email.text=val;
-                }, TextEditingController(text: email.text), "Email",
+                }, TextEditingController(text: email.text), "Email".tr,
                 "Enter Your Email", keyboard: TextInputType.emailAddress),
                 // Password
 

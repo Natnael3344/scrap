@@ -2,6 +2,7 @@ import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/Screens/cameras.dart';
 import 'package:scrap/database.dart';
@@ -132,7 +133,7 @@ class _SellState extends State<Sell> {
     ):SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Sell scrap"),
+          title:  Text("Sell_Scrap".tr),
           backgroundColor: const Color.fromARGB(255,130,36,50),
         ),
         bottomNavigationBar: Container(
@@ -163,9 +164,9 @@ class _SellState extends State<Sell> {
               widget.selected?Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Paper".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
 
                   buildContainer(paper,paperPrice,paper.length),
@@ -174,9 +175,9 @@ class _SellState extends State<Sell> {
               widget.selected1?Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Plastic".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(plastic,plasticPrice,plastic.length),
                 ],
@@ -184,9 +185,9 @@ class _SellState extends State<Sell> {
               widget.selected2?Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Metal".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(metals,metalsPrice,metals.length),
                 ],
@@ -194,9 +195,9 @@ class _SellState extends State<Sell> {
               widget.selected3?Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("E_waste".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(ewaste,ewastePrice,ewaste.length),
                 ],
@@ -204,9 +205,9 @@ class _SellState extends State<Sell> {
               widget.selected4?Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Other_items".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(other,otherPrice,other.length),
                 ],

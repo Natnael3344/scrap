@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:scrap/Screens/search.dart';
 import 'package:scrap/Screens/sell.dart';
@@ -55,7 +56,7 @@ class _HomeState extends State<Home> {
                   width: double.maxFinite,
                   decoration: const BoxDecoration(color: Color.fromARGB(255,130,36,50),borderRadius: BorderRadius.all(Radius.circular(20))),
                   child:   Center(child:
-                  Text(S.of(context).welcomeText,style: const TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text("What_would".tr,style: const TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
                   // Text("What would you like to sell?",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)
                   ),
 
@@ -88,29 +89,29 @@ class _HomeState extends State<Home> {
                       value: 'Paper',
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/3073/3073464.png',
-                          'Paper'),
+                          'Paper'.tr),
                     ),
                     MultiSelectCard(
                       value: 'Plastic',
                       child: getChild(
                           'https://www.pngall.com/wp-content/uploads/5/Plastic-Bottle-PNG-Image.png',
-                          'Plastic'),
+                          'Plastic'.tr),
                     ),
                     MultiSelectCard(
-                      value: 'Metal',
+                      value: 'Metal'.tr,
 
                         child: getChild(
                             'https://www.pngall.com/wp-content/uploads/2018/03/Steel-PNG-File-Download-Free.png',
                             'Metal'),
                     ),
                     MultiSelectCard(
-                      value: 'E-waste',
+                      value: 'E_waste'.tr,
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/4380/4380451.png',
                           'E-waste'),
                     ),
                     MultiSelectCard(
-                      value: 'Other items',
+                      value: 'Other_items'.tr,
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/1327/1327264.png',
                           'Other items'),
@@ -201,14 +202,14 @@ class _HomeState extends State<Home> {
                           }
                           return null;
                         },
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.search,color: Colors.black,),
-                          hintText: "Pick up address....",
-                          labelStyle: TextStyle(color: Colors.black),
-                          hintStyle: TextStyle(color: Colors.black),
+                        decoration:  InputDecoration(
+                          prefixIcon: const Icon(Icons.search,color: Colors.black,),
+                          hintText: "Pick_up".tr,
+                          labelStyle: const TextStyle(color: Colors.black),
+                          hintStyle: const TextStyle(color: Colors.black),
 
                           filled: true,
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide(color: Color.fromARGB(255,130,36,50)),
                               borderRadius: BorderRadius.all(Radius.circular(30)))
                         ),

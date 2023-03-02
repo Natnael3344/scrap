@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scrap/Screens/money.dart';
 
 class CheckOut extends StatefulWidget {
@@ -21,7 +22,7 @@ class _CheckOutState extends State<CheckOut> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Confirmation"),
+        title:  Text("Confirmation".tr),
         backgroundColor: const Color.fromARGB(255,130,36,50),
       ),
       bottomNavigationBar: Container(
@@ -39,7 +40,7 @@ class _CheckOutState extends State<CheckOut> {
               );
 
             },
-            child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Confirm",style: TextStyle(fontSize: 16),))),
+            child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("Confirm".tr,style: const TextStyle(fontSize: 16),))),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -82,9 +83,9 @@ class _CheckOutState extends State<CheckOut> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children:  [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Phone number",style: TextStyle(fontWeight: FontWeight.bold),),
+                 Padding(
+                  padding: const EdgeInsets.only(left: 20,top: 20),
+                  child: Text("Phone_Number".tr,style: const TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20,top: 20),
@@ -95,9 +96,9 @@ class _CheckOutState extends State<CheckOut> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children:  [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Pickup date",style: TextStyle(fontWeight: FontWeight.bold),),
+                 Padding(
+                  padding: const EdgeInsets.only(left: 20,top: 20),
+                  child: Text("Pickup_date".tr,style: const TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20,top: 20),

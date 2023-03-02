@@ -22,7 +22,38 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "welcomeText":
-            MessageLookupByLibrary.simpleMessage("नमस्कार स्वागत आहे")
+        "welcomeText": MessageLookupByLibrary.simpleMessage("नमस्कार स्वागत आहे"),
+    "Scrapify": MessageLookupByLibrary.simpleMessage("स्क्रैपिफाय"),
+    "continue with phone number": MessageLookupByLibrary.simpleMessage("फोन नंबरसह सुरू ठेवा"),
+    "Scrapify is the best place to buy and sell scrap. Join our platform and start selling and buying scrap!": MessageLookupByLibrary.simpleMessage("भंगार खरेदी आणि विक्रीसाठी स्क्रैपिफाय हे सर्वोत्तम ठिकाण आहे. आमच्या प्लॅटफॉर्ममध्ये सामील व्हा आणि भंगार विकणे आणि खरेदी करणे सुरू करा !"),
+    "Enter phone number": MessageLookupByLibrary.simpleMessage("फोन नंबर प्रविष्ट करा"),
+    "Phone Number": MessageLookupByLibrary.simpleMessage("फोन नंबर"),
+    "Next": MessageLookupByLibrary.simpleMessage("पुढे"),
+    "OTP Verification": MessageLookupByLibrary.simpleMessage("ओ.टी.पी पडताळणी"),
+    "Verify": MessageLookupByLibrary.simpleMessage("यथार्थता"),
+    "What would you like to sell?": MessageLookupByLibrary.simpleMessage("तुम्हाला काय विकायला आवडेल?"),
+    "Sell Scarp": MessageLookupByLibrary.simpleMessage("भंगार विक्री"),
+    "continue": MessageLookupByLibrary.simpleMessage("पुढे चला"),
+    "Upload scrap items pictures": MessageLookupByLibrary.simpleMessage("भंगारचे चित्र अपलोड करा"),
+    "Select a date for scrap pickup": MessageLookupByLibrary.simpleMessage("भंगार विक्रीसाठी तारीख निवडा"),
+    "Confirmation": MessageLookupByLibrary.simpleMessage("पुष्टी करणे"),
+    "Confirm": MessageLookupByLibrary.simpleMessage("पुष्टी करा"),
+    "Select money acceptance mode": MessageLookupByLibrary.simpleMessage("पैसे स्वीकृतीचे मोड निवडा"),
+    "Submit": MessageLookupByLibrary.simpleMessage("प्रस्तुत करा"),
+    "Request History": MessageLookupByLibrary.simpleMessage("विनंतीचे इतिहास"),
+    "Activity": MessageLookupByLibrary.simpleMessage("क्रियाकलाप"),
+    "Rate List": MessageLookupByLibrary.simpleMessage("दर यादी"),
+    "Pick up address.....": MessageLookupByLibrary.simpleMessage("पत्ता घ्या....."),
+    "Profile": MessageLookupByLibrary.simpleMessage("प्रोफाइल"),
+    "How it works": MessageLookupByLibrary.simpleMessage("हे कसे कार्य करते"),
+    "About": MessageLookupByLibrary.simpleMessage("विषयी"),
+    "Call us": MessageLookupByLibrary.simpleMessage("कॉल करा"),
+    "Name": MessageLookupByLibrary.simpleMessage("नाव"),
+    "Mobile Number": MessageLookupByLibrary.simpleMessage("मोबाईल नंबर"),
+    "Email": MessageLookupByLibrary.simpleMessage("ईमेल"),
+    "Home": MessageLookupByLibrary.simpleMessage("मुख्यपृष्ठ"),
+
+
+
       };
 }

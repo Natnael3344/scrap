@@ -1,5 +1,6 @@
 import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:scrap/Screens/check_out.dart';
 import 'package:scrap/Screens/money.dart';
@@ -20,7 +21,7 @@ class _PickDateState extends State<PickDate> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: const Text("Sell scrap"),
+            title:  Text("Sell_Scrap".tr),
             backgroundColor: const Color.fromARGB(255,130,36,50),
           ),
           bottomNavigationBar: Container(
@@ -41,13 +42,13 @@ class _PickDateState extends State<PickDate> {
                     );
                   }
                 },
-                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("continue".tr,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           ),
           body: Column(
             children: [
               const Padding(
                 padding: EdgeInsets.all(20),
-                child: Text("Select a date for scrap pickup",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+                child: Text("Select_date",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),

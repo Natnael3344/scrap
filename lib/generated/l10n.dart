@@ -59,6 +59,22 @@ class S {
       args: [],
     );
   }
+  String get Enterphonenumber {
+    return Intl.message(
+      'Enter phone number',
+      name: 'Enterphonenumber',
+      desc: '',
+      args: [],
+    );
+  }
+  String get Home {
+    return Intl.message(
+      'Enter phone number',
+      name: 'Enterphonenumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

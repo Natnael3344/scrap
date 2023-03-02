@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:scrap/Screens/date.dart';
 
@@ -37,7 +38,7 @@ class _UploadState extends State<Upload> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Upload scrap items' pictures"),
+        title:  Text("Upload_scrap".tr),
         backgroundColor: const Color.fromARGB(255,130,36,50),
       ),
       body: Column(

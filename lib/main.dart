@@ -3,15 +3,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:scrap/Screens/home_page.dart';
+import 'package:scrap/Screens/languageFirst.dart';
 import 'package:scrap/Screens/login.dart';
 import 'package:scrap/Screens/name.dart';
+import 'package:scrap/Utils/app_constants.dart';
+import 'package:scrap/Utils/messages.dart';
 
+import 'Controllers/language_controller.dart';
 import 'LanguageChangeProvider.dart';
 import 'generated/l10n.dart';
-
+import 'package:scrap/Utils/dep.dart' as dep;
 
 List<CameraDescription>? cameras;
 Future<void> main() async {
@@ -19,32 +24,25 @@ Future<void> main() async {
 
   await Firebase.initializeApp();
   cameras = await availableCameras();
-  runApp(const MyApp());
+  Map<String, Map<String,String>> _languages=await dep.init();
+  runApp( MyApp(languages: _languages,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({Key? key, required this.languages}) : super(key: key);
+  final Map<String, Map<String,String>> languages;
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<LanguageChangeProvider>(
-      create: (context) =>  LanguageChangeProvider(),
-      child: Builder(
-          builder: (context) =>
-        MaterialApp(
-           locale: Provider.of<LanguageChangeProvider>(context, listen: true).currentLocale,
-           localizationsDelegates: const [
-             S.delegate,
-             GlobalMaterialLocalizations.delegate,
-             GlobalWidgetsLocalizations.delegate,
-             GlobalCupertinoLocalizations.delegate,
-           ],
-           supportedLocales: S.delegate.supportedLocales,
+    return GetBuilder<LocalizationController>(builder: (localizationController)
+        {
+        return GetMaterialApp(
+           locale: localizationController.locale,
+          translations: Messages(languages:languages),
+          fallbackLocale: Locale(AppConstants.languages[0].languageCode,AppConstants.languages[0].countryCode),
           debugShowCheckedModeBanner: false,
         home: const MyHome()
-      ),
-    )
-    );
+      );
+        });
   }
 }
 class MyHome extends StatefulWidget {
@@ -123,7 +121,7 @@ class _MyHomeState extends State<MyHome> {
                         );
                         check();
                     },
-                    child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue with Phone Number",style: TextStyle(fontSize: 16),))),
+                    child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 16),))),
               ),
             ),
             const Text("Privacy Policy")
@@ -140,7 +138,7 @@ class _MyHomeState extends State<MyHome> {
       Navigator.push(context,
         MaterialPageRoute(
           builder: (BuildContext context) =>
-          const LoginScreen(),
+          const LanguageFirst(),
         ),
       );
 

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:scrap/Screens/home_page.dart';
 
@@ -76,7 +77,7 @@ class _OTPScreenState extends State<OTPScreen> {
     return Scaffold(
       key: _scaffoldkey,
       appBar: AppBar(
-        title: const Text('OTP Verification',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+        title:  Text('OTP_Verification'.tr,style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
         backgroundColor: const Color.fromARGB(255,130,36,50),
       ),
       body: Column(
@@ -88,7 +89,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 margin: const EdgeInsets.only(top: 40),
                 child: Center(
                   child: Text(
-                    'Verify +91-${widget.phone}',
+                    '${'Verify '.tr}+91-${widget.phone}',
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
@@ -148,7 +149,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   }
 
                 },
-                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Verify",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("Verify".tr,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           )
         ],
       ),

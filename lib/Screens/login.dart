@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'otp.dart';
 
@@ -25,10 +26,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Column(children: [
             Container(
               margin: const EdgeInsets.only(top: 60),
-              child: const Center(
+              child:  Center(
                 child: Text(
-                  'Enter Phone Number',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                  'Enter_phone_number'.tr,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                 ),
               ),
             ),
@@ -36,10 +37,10 @@ class _LoginScreenState extends State<LoginScreen> {
               margin: const EdgeInsets.only(top: 40, right: 10, left: 10),
               child: TextField(
                 cursorColor: const Color.fromARGB(255,130,36,50),
-                decoration: const InputDecoration(
-                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:  Color.fromARGB(255,130,36,50))),
-                  hintText: 'Phone Number',
-                  prefix: Padding(
+                decoration:  InputDecoration(
+                  focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color:  Color.fromARGB(255,130,36,50))),
+                  hintText: 'Phone_Number'.tr,
+                  prefix: const Padding(
                     padding: EdgeInsets.all(4),
                     child: Text('+91'),
                   ),
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => OTPScreen(_controller.text)));
                 },
-                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Next",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("Next".tr,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           )
         ],
       ),

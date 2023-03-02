@@ -1,6 +1,7 @@
 import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'home_page.dart';
 
@@ -36,7 +37,7 @@ class _MoneyState extends State<Money> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: const Text("Sell scrap"),
+            title:  Text("Sell_Scrap".tr),
             backgroundColor: const Color.fromARGB(255,130,36,50),
           ),
           bottomNavigationBar: Container(
@@ -49,14 +50,14 @@ class _MoneyState extends State<Money> {
                 onPressed: (){
                   saveConfirmation();
                 },
-                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Submit",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+                child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("Submit".tr,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
           ),
           body: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Text("Select money acceptance mode",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+                 Text("Select_money".tr,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
                 ListTile(
                   onTap: (){
                     setState(() {

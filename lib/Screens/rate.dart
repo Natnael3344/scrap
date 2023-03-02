@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:scrap/database.dart';
 
@@ -113,7 +114,7 @@ class _RateState extends State<Rate> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text("Rate List"),
+          title:  Text("Rate_list".tr),
           backgroundColor: const Color.fromARGB(255,130,36,50),
         ),
         body: SingleChildScrollView(
@@ -122,9 +123,9 @@ class _RateState extends State<Rate> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Paper",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Paper".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
 
                   buildContainer(paper,paperPrice,paper.length),
@@ -133,9 +134,9 @@ class _RateState extends State<Rate> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Plastic",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Plastic".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(plastic,plasticPrice,plastic.length),
                 ],
@@ -143,9 +144,9 @@ class _RateState extends State<Rate> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Metal",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Metal".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(metals,metalsPrice,metals.length),
                 ],
@@ -153,9 +154,9 @@ class _RateState extends State<Rate> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("E-Waste",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("E_waste".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(ewaste,ewastePrice,ewaste.length),
                 ],
@@ -163,9 +164,9 @@ class _RateState extends State<Rate> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20,top: 20),
-                    child: Text("Other items",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: Text("Other_items".tr,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                   buildContainer(other,otherPrice,other.length),
                 ],

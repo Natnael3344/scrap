@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:checkout_screen_ui/checkout_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scrap/Screens/upload.dart';
 
 
@@ -52,7 +53,7 @@ class _TakePictureScreenState extends State<TakePictureScreen>{
 
     return  Scaffold(
       appBar: AppBar(
-        title: const Text("Upload scrap items' pictures"),
+        title:  Text("Upload_scrap".tr),
         backgroundColor: const Color.fromARGB(255,130,36,50),
       ),
       body: Column(

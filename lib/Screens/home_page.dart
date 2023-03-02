@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:get/get.dart';
 import 'package:scrap/Screens/about.dart';
 import 'package:scrap/Screens/call.dart';
 import 'package:scrap/Screens/guide.dart';
@@ -54,16 +55,16 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
+               DrawerHeader(
+                decoration: const BoxDecoration(
                     color:  Color.fromARGB(255,130,36,50),
                     border: Border(bottom: BorderSide(color: Colors.black))
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Text(
-                    'SCRAPIFY',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white),
+                    'SCRAPIFY'.tr,
+                    style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white),
                   ),
                 ),
               ),
@@ -79,9 +80,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    title: const Text(
-                      "Profile",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    title:  Text(
+                      "Profile".tr,
+                      style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),
               Container(
@@ -95,9 +96,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    title: const Text(
-                      "How it works",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    title:  Text(
+                      "How_it_works".tr,
+                      style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),
               Container(
@@ -111,9 +112,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    title: const Text(
-                      "About",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    title:  Text(
+                      "About".tr,
+                      style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),
               Container(
@@ -144,20 +145,20 @@ class _HomePageState extends State<HomePage> {
                       //   ),
                       // );
                     },
-                    title: const Text(
-                      "Call us",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    title:  Text(
+                      "Call_us".tr,
+                      style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          items:  const [
+          items:   [
             BottomNavigationBarItem(icon: Icon(Icons.person),label: "Account",backgroundColor: Color.fromARGB(255,130,36,50)),
-            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home",backgroundColor: Color.fromARGB(255,130,36,50)),
-            BottomNavigationBarItem(icon: Icon(Icons.history),label: "Activity"),
-            BottomNavigationBarItem(icon: Icon(Icons.monetization_on_outlined),label: "Rate list"),
+            BottomNavigationBarItem(icon: const Icon(Icons.home),label: "Home".tr,backgroundColor: Color.fromARGB(255,130,36,50)),
+            BottomNavigationBarItem(icon: const Icon(Icons.history),label: "Activity".tr),
+            BottomNavigationBarItem(icon: const Icon(Icons.monetization_on_outlined),label: "Rate_list".tr),
 
           ],
           currentIndex: _selectedIndex,
