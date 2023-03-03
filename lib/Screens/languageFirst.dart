@@ -7,16 +7,14 @@ import 'package:scrap/Screens/login.dart';
 import 'package:scrap/Utils/app_constants.dart';
 
 import '../LanguageChangeProvider.dart';
-
+int index=5;
 class LanguageFirst extends StatelessWidget {
   const LanguageFirst({Key? key}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: GetBuilder<LocalizationController>(builder: (localizationController) {
+        index=localizationController.selectedIndex;
         return Scaffold(
             floatingActionButtonLocation: FloatingActionButtonLocation
                 .centerDocked,
@@ -38,7 +36,7 @@ class LanguageFirst extends StatelessWidget {
                   ),
                   child: Container(
                       margin: const EdgeInsets.only(left: 20, right: 20),
-                      child:  Text('continue'.tr, style: TextStyle(
+                      child:  Text('continue'.tr, style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),))),
             ),
             body: Column(
@@ -62,15 +60,17 @@ class LanguageFirst extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       buildContainer(context, () {
+                        index=0;
                         localizationController.setLanguage(Locale(
                             AppConstants.languages[0].languageCode,AppConstants.languages[0].countryCode));
                         localizationController.setSelectIndex(0);
-                      }, 'Hi!', 'I am Sam', 'English'),
+                      }, 'Hi!', 'I am Sam', 'English',0),
                       buildContainer(context, () {
+                        index=2;
                         localizationController.setLanguage(Locale(
-                            AppConstants.languages[1].languageCode,AppConstants.languages[1].countryCode));
-                        localizationController.setSelectIndex(1);
-                      }, 'हाय!', 'मी सॅम आहे', 'Marathi'),
+                            AppConstants.languages[2].languageCode,AppConstants.languages[2].countryCode));
+                        localizationController.setSelectIndex(2);
+                      }, 'हाय!', 'मी सॅम आहे', 'Marathi',2),
                     ],
                   ),
                 ),
@@ -78,24 +78,27 @@ class LanguageFirst extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     buildContainer(context, () {
+                      index=1;
                       localizationController.setLanguage(Locale(
                           AppConstants.languages[1].languageCode,AppConstants.languages[1].countryCode));
                       localizationController.setSelectIndex(1);
-                    }, 'नमस्ते!', 'मैं सैम हूं', 'Hindi'),
+                    }, 'नमस्ते!', 'मैं सैम हूं', 'Hindi',1),
                     buildContainer(context, () {
+                      index=3;
                       localizationController.setLanguage(Locale(
-                          AppConstants.languages[1].languageCode,AppConstants.languages[1].countryCode));
-                      localizationController.setSelectIndex(1);
-                    }, 'வணக்கம்!', 'நான் சாம்', 'Tamil'),
+                          AppConstants.languages[3].languageCode,AppConstants.languages[3].countryCode));
+                      localizationController.setSelectIndex(3);
+                    }, 'வணக்கம்!', 'நான் சாம்', 'Tamil',3),
                   ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30, right: 35, left: 35),
                   child: buildContainer(context, () {
+                    index=4;
                     localizationController.setLanguage(Locale(
-                        AppConstants.languages[1].languageCode,AppConstants.languages[1].countryCode));
-                    localizationController.setSelectIndex(1);
-                  }, 'హాయ్!', 'నేను సామ్', 'Telugu'),
+                        AppConstants.languages[4].languageCode,AppConstants.languages[4].countryCode));
+                    localizationController.setSelectIndex(4);
+                  }, 'హాయ్!', 'నేను సామ్', 'Telugu',4),
                 ),
               ],
             )
@@ -105,7 +108,7 @@ class LanguageFirst extends StatelessWidget {
     );
   }
 
-  Container buildContainer(BuildContext context,void Function()? onPressed,String text, String text1, String text2) {
+  Container buildContainer(BuildContext context,void Function()? onPressed,String text, String text1, String text2,int change) {
     return Container(
                   height: 150,
                   width: 150,
@@ -119,11 +122,15 @@ class LanguageFirst extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:  [
-                          Text(text,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                          Text(text1,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
+                          index==change?const Padding(
+                            padding: EdgeInsets.only(left: 80),
+                            child: Icon(Icons.check_circle_outline,size: 30,),
+                          ):const SizedBox(),
+                          Text(text,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                          Text(text1,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 17)),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Text(text2,style: TextStyle(color: Colors.blue),),
+                            child: Text(text2,style: const TextStyle(color: Colors.blue),),
                           )
                         ],
                       ),

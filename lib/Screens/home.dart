@@ -89,32 +89,32 @@ class _HomeState extends State<Home> {
                       value: 'Paper',
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/3073/3073464.png',
-                          'Paper'.tr),
+                          'Paper'),
                     ),
                     MultiSelectCard(
                       value: 'Plastic',
                       child: getChild(
                           'https://www.pngall.com/wp-content/uploads/5/Plastic-Bottle-PNG-Image.png',
-                          'Plastic'.tr),
+                          'Plastic'),
                     ),
                     MultiSelectCard(
-                      value: 'Metal'.tr,
+                      value: 'Metal',
 
                         child: getChild(
                             'https://www.pngall.com/wp-content/uploads/2018/03/Steel-PNG-File-Download-Free.png',
                             'Metal'),
                     ),
                     MultiSelectCard(
-                      value: 'E_waste'.tr,
+                      value: 'E-waste',
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/4380/4380451.png',
-                          'E-waste'),
+                          'E_waste'),
                     ),
                     MultiSelectCard(
-                      value: 'Other_items'.tr,
+                      value: 'Other items',
                       child: getChild(
                           'https://cdn-icons-png.flaticon.com/512/1327/1327264.png',
-                          'Other items'),
+                          'Other_items'),
                     ),
 
                     ],
@@ -274,7 +274,7 @@ class _HomeState extends State<Home> {
               )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(title),
+            child: Text(title.tr),
           )
         ],
       ),

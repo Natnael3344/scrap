@@ -38,7 +38,7 @@ class _OTPScreenState extends State<OTPScreen> {
       content:  Row(
         children: [
           const CircularProgressIndicator(color:  Color.fromARGB(255,130,36,50),),
-          Container(margin: const EdgeInsets.only(left: 7),child: const Text("Verifying..." )),
+          Container(margin: const EdgeInsets.only(left: 7),child:  Text("Verifying".tr )),
         ],),
     );
     showDialog(barrierDismissible: false,
@@ -53,7 +53,7 @@ class _OTPScreenState extends State<OTPScreen> {
       content:  Row(
         children: [
           const Icon(Icons.check_circle,color:  Color.fromARGB(255,130,36,50),),
-          Container(margin: const EdgeInsets.only(left: 7),child: const Text("Verified" )),
+          Container(margin: const EdgeInsets.only(left: 7),child:  Text("Verified".tr )),
         ],),
     );
     showDialog(barrierDismissible: false,
@@ -89,7 +89,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 margin: const EdgeInsets.only(top: 40),
                 child: Center(
                   child: Text(
-                    '${'Verify '.tr}+91-${widget.phone}',
+                    '${'Verify'.tr} +91-${widget.phone}',
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),

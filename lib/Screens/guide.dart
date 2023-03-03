@@ -14,7 +14,7 @@ class _GuideState extends State<Guide> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("How_it_works?".tr),
+        title:  Text("How_it_works".tr),
         backgroundColor: const Color.fromARGB(255,130,36,50),
       ),
       body: SingleChildScrollView(

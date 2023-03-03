@@ -46,9 +46,9 @@ class _PickDateState extends State<PickDate> {
           ),
           body: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: Text("Select_date",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+               Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text("Select_date".tr,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),

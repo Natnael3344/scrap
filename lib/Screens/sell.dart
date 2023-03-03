@@ -45,7 +45,7 @@ class _SellState extends State<Sell> {
   List otherPrice=[];
 
   void readData() {
-    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation").child("paper");
+    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("paper".tr);
     databasePaper.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){
@@ -55,7 +55,7 @@ class _SellState extends State<Sell> {
         });
       });
     } );
-    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation").child("plastic");
+    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("plastic".tr);
     databasePlastic.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){
@@ -66,7 +66,7 @@ class _SellState extends State<Sell> {
 
       });
     } );
-    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation").child("metals");
+    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("metals".tr);
     databaseMetals.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
 
@@ -77,7 +77,7 @@ class _SellState extends State<Sell> {
         });
       });
     } );
-    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation").child("ewaste");
+    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("ewaste".tr);
     databaseEwaste.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
 
@@ -89,7 +89,7 @@ class _SellState extends State<Sell> {
 
       });
     } );
-    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation").child("other");
+    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("other".tr);
     databaseOther.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){
@@ -156,7 +156,7 @@ class _SellState extends State<Sell> {
 
                 }
               },
-              child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child: const Text("Continue",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
+              child: Container(margin: const EdgeInsets.only(left: 20,right: 20),child:  Text("continue".tr,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),))),
         ),
         body: SingleChildScrollView(
           child: Column(

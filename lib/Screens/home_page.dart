@@ -128,9 +128,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    title: const Text(
-                      "Language",
-                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
+                    title:  Text(
+                      "Language".tr,
+                      style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                     )),
               ),
               Container(
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           items:   [
-            BottomNavigationBarItem(icon: Icon(Icons.person),label: "Account",backgroundColor: Color.fromARGB(255,130,36,50)),
+            BottomNavigationBarItem(icon: const Icon(Icons.person),label: "Account".tr,backgroundColor: Color.fromARGB(255,130,36,50)),
             BottomNavigationBarItem(icon: const Icon(Icons.home),label: "Home".tr,backgroundColor: Color.fromARGB(255,130,36,50)),
             BottomNavigationBarItem(icon: const Icon(Icons.history),label: "Activity".tr),
             BottomNavigationBarItem(icon: const Icon(Icons.monetization_on_outlined),label: "Rate_list".tr),

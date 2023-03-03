@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
   }
   @override
   Widget build(BuildContext context) {
-    return profile.isEmpty?SafeArea(
+    return profile.isEmpty?const SafeArea(
       child: Scaffold(
           backgroundColor: Colors.white,
           // appBar: AppBar(

@@ -25,7 +25,7 @@ class _RateState extends State<Rate> {
   List otherPrice=[];
 
   void readData() {
-    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation").child("paper");
+    final databasePaper = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("paper".tr);
     databasePaper.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){
@@ -35,7 +35,7 @@ class _RateState extends State<Rate> {
         });
       });
     } );
-    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation").child("plastic");
+    final databasePlastic = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("plastic".tr);
     databasePlastic.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){
@@ -46,7 +46,7 @@ class _RateState extends State<Rate> {
 
       });
     } );
-    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation").child("metals");
+    final databaseMetals = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("metals".tr);
     databaseMetals.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
 
@@ -57,7 +57,7 @@ class _RateState extends State<Rate> {
         });
       });
     } );
-    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation").child("ewaste");
+    final databaseEwaste = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("ewaste".tr);
     databaseEwaste.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
 
@@ -69,7 +69,7 @@ class _RateState extends State<Rate> {
 
       });
     } );
-    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation").child("other");
+    final databaseOther = FirebaseDatabase.instance.ref().child("Confirmation".tr).child("other".tr);
     databaseOther.once().then((event) {
       Map  dataSnapshot = event.snapshot.value as Map;
       dataSnapshot.forEach((key, values){

@@ -79,8 +79,8 @@ class _MoneyState extends State<Money> {
                     'https://img.icons8.com/color/344/bhim.png',
                     fit: BoxFit.contain,
                   ),
-                  title:  Text("UPI",style: TextStyle(fontWeight: FontWeight.bold,color: select==false?Colors.black:Colors.white),),
-                  subtitle: Text("Get money in bank account through UPI",style: TextStyle(color: select==false?Colors.black:Colors.white),),
+                  title:  Text("UPI".tr,style: TextStyle(fontWeight: FontWeight.bold,color: select==false?Colors.black:Colors.white),),
+                  subtitle: Text("Get_UPI".tr,style: TextStyle(color: select==false?Colors.black:Colors.white),),
                 ),
                 ListTile(
                   onTap: (){
@@ -103,8 +103,8 @@ class _MoneyState extends State<Money> {
                     'https://cdn2.iconfinder.com/data/icons/social-icons-color/512/paytm-512.png',
                     fit: BoxFit.contain,
                   ),
-                  title:  Text("Paytm wallet",style: TextStyle(fontWeight: FontWeight.bold,color: select1==false?Colors.black:Colors.white),),
-                  subtitle:Text("Get money in Paytm wallet",style: TextStyle(color: select1==false?Colors.black:Colors.white),),
+                  title:  Text("Paytm_wallet".tr,style: TextStyle(fontWeight: FontWeight.bold,color: select1==false?Colors.black:Colors.white),),
+                  subtitle:Text("Get_wallet".tr,style: TextStyle(color: select1==false?Colors.black:Colors.white),),
                 ),
                 ListTile(
                   onTap: (){
@@ -127,8 +127,8 @@ class _MoneyState extends State<Money> {
                     'https://cdn3.iconfinder.com/data/icons/random-04/100/Artboard_1512x-512.png',
                     fit: BoxFit.contain,
                   ),
-                  title: Text("Bank Account",style: TextStyle(fontWeight: FontWeight.bold,color: select2==false?Colors.black:Colors.white),),
-                  subtitle:Text("Get money in bank account through IMPS",style: TextStyle(color: select2==false?Colors.black:Colors.white),),
+                  title: Text("Bank_Account".tr,style: TextStyle(fontWeight: FontWeight.bold,color: select2==false?Colors.black:Colors.white),),
+                  subtitle:Text("Get_bank".tr,style: TextStyle(color: select2==false?Colors.black:Colors.white),),
                 ),
                 ListTile(
                   onTap: (){
@@ -151,8 +151,8 @@ class _MoneyState extends State<Money> {
                     'https://cdn2.iconfinder.com/data/icons/finance-253/24/money-payment-finance-coin-credit-256.png',
                     fit: BoxFit.contain,
                   ),
-                  title:  Text("Cash",style: TextStyle(fontWeight: FontWeight.bold,color: select3==false?Colors.black:Colors.white),),
-                  subtitle:  Text("Get money in cash by the scrap collector",style: TextStyle(color: select3==false?Colors.black:Colors.white),),
+                  title:  Text("Cash".tr,style: TextStyle(fontWeight: FontWeight.bold,color: select3==false?Colors.black:Colors.white),),
+                  subtitle:  Text("Get_cash".tr,style: TextStyle(color: select3==false?Colors.black:Colors.white),),
                 ),
               ],
             ),

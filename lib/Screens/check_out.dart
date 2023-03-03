@@ -49,9 +49,9 @@ class _CheckOutState extends State<CheckOut> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children:  [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20,top: 20),
-                  child: Text("Scrap items",style: TextStyle(fontWeight: FontWeight.bold),),
+                 Padding(
+                  padding: const EdgeInsets.only(left: 20,top: 20),
+                  child: Text("Scrap_items".tr,style: const TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 Container(
                   padding: const EdgeInsets.only(left: 5),

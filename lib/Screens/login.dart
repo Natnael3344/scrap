@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255,130,36,50),
-        title: const Text("Login/Sign Up",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+        title:  Text("Login".tr,style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

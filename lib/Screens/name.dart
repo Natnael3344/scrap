@@ -59,9 +59,9 @@ class _NameState extends State<Name> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 75,bottom: 75),
-                  child: Text("Sign up",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                 Padding(
+                  padding: const EdgeInsets.only(top: 75,bottom: 75),
+                  child: Text("Sign_up".tr,style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
                 ),
 
 
@@ -74,8 +74,8 @@ class _NameState extends State<Name> {
                     },
                         (val) {
                           fName.text=val;
-                    }, TextEditingController(text: fName.text), "First name",
-                    "Enter Your first name", keyboard: TextInputType.name),
+                    }, TextEditingController(text: fName.text), "First_name".tr,
+                    "Enter_first".tr, keyboard: TextInputType.name),
                 textField(
                         (value) {
                       if (value!.isEmpty) {
@@ -85,8 +85,8 @@ class _NameState extends State<Name> {
                     },
                         (val) {
                           lName.text=val;
-                    }, TextEditingController(text: lName.text), "Last name",
-                    "Enter Your last name", keyboard: TextInputType.name),
+                    }, TextEditingController(text: lName.text), "Last_name".tr,
+                    "Enter_last".tr, keyboard: TextInputType.name),
                 // Email
             textField(
                     (value) {
@@ -98,7 +98,7 @@ class _NameState extends State<Name> {
                     (val) {
                       email.text=val;
                 }, TextEditingController(text: email.text), "Email".tr,
-                "Enter Your Email", keyboard: TextInputType.emailAddress),
+                "Enter_Email".tr, keyboard: TextInputType.emailAddress),
                 // Password
 
 
